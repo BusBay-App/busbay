@@ -43,23 +43,23 @@ class InfoDetails : AppCompatActivity() {
 
     //Firebase auth
     auth= Firebase.auth
-
-    //check if already exits
-    val mFireStore = FirebaseFirestore.getInstance()
-    val docref = mFireStore.collection("users").document(auth.currentUser?.email.toString())
-
-    docref.get().addOnCompleteListener { task ->
-        if (task.isSuccessful) {
-            Toast.makeText(applicationContext, "Exists", Toast.LENGTH_SHORT).show()
-
-            startActivity(Intent(applicationContext, MainActivity::class.java))
-            finish()
-
-        }
-    }
-
-
-    Toast.makeText(this, "not runngng", Toast.LENGTH_SHORT).show()
+//
+//    //check if already exits
+//    val mFireStore = FirebaseFirestore.getInstance()
+//    val docref = mFireStore.collection("users").document(auth.currentUser?.email.toString())
+//
+//    docref.get().addOnCompleteListener { task ->
+//        if (task.isSuccessful) {
+//            Toast.makeText(applicationContext, "Exists", Toast.LENGTH_SHORT).show()
+//
+//            startActivity(Intent(applicationContext, MainActivity::class.java))
+//            finish()
+//
+//        }
+//    }
+//
+//
+//    Toast.makeText(this, "not runngng", Toast.LENGTH_SHORT).show()
 
 
 

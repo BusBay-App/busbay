@@ -63,7 +63,7 @@ class SignIn : AppCompatActivity() {
         if(currentUser==null){
             return
         }
-        startActivity(Intent(this,InfoDetails::class.java))  /////////////////////////////////////////////
+        startActivity(Intent(this,SlapScreen::class.java))  /////////////////////////////////////////////
         finish()
 
     }
