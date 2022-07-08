@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">BusBay</string>
     <string name="client_id">699132902791-ej3a5klfhq07g5t6g4mo2cac5dcn7uh9.apps.googleusercontent.com</string>
+    <string name="select">Select Item</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="profession">Profession</string>
+    <string-array name="Profession">
+        <item>Student</item>
+        <item>Teacher</item>
+        <item>Bus Driver</item>
+        <item>Others</item>
+    </string-array>
 
 </resources>

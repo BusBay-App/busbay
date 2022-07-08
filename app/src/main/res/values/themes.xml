@@ -16,7 +16,7 @@
 
     <style name="Theme.BusBay1" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 
-
+        <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryVariant">#4BB300</item>
@@ -33,5 +33,14 @@
 
 <!--        actionbar-->
         <item name="android:actionMenuTextColor">#000000</item>
+
     </style>
+    <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Dialog">
+        <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
+    </style>
+
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:headerBackground">#968F00</item>
+    </style>
+
 </resources>
