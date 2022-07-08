@@ -35,10 +35,11 @@
         <item name="android:actionMenuTextColor">#000000</item>
 
     </style>
+<!--    for calander-->
     <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Dialog">
         <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
     </style>
-
+<!--for calander-->
     <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.DatePicker">
         <item name="android:headerBackground">#968F00</item>
     </style>

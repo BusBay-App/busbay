@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
@@ -18,8 +19,11 @@ import com.example.busbay.databinding.ActivityInfoDetailsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.type.Date
+import kotlinx.coroutines.delay
 import java.util.*
 
 
@@ -30,15 +34,35 @@ class InfoDetails : AppCompatActivity() {
 
 //    override fun onStart() {
 //        super.onStart()
-//        updateUi(auth.currentUser)
+//
 //    }
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityInfoDetailsBinding.inflate(layoutInflater)
+    binding= ActivityInfoDetailsBinding.inflate(layoutInflater)
 
-        //Firebase auth
-        auth= Firebase.auth
+    //Firebase auth
+    auth= Firebase.auth
+
+    //check if already exits
+    val mFireStore = FirebaseFirestore.getInstance()
+    val docref = mFireStore.collection("users").document(auth.currentUser?.email.toString())
+
+    docref.get().addOnCompleteListener { task ->
+        if (task.isSuccessful) {
+            Toast.makeText(applicationContext, "Exists", Toast.LENGTH_SHORT).show()
+
+            startActivity(Intent(applicationContext, MainActivity::class.java))
+            finish()
+
+        }
+    }
+
+
+    Toast.makeText(this, "not runngng", Toast.LENGTH_SHORT).show()
+
+
+
 
         //Setting Visbility of text view
         binding.roomDetailsEdittext.setVisibility(View.INVISIBLE);
@@ -86,7 +110,7 @@ class InfoDetails : AppCompatActivity() {
         val professionType=resources.getStringArray(R.array.Profession)
         val arrayAdapter= ArrayAdapter(this,R.layout.dropdown_item,professionType)
         binding.autoCompleteTextView.setAdapter(arrayAdapter)
-        Toast.makeText(this, binding.autoCompleteTextView.text.toString(), Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, binding.autoCompleteTextView.text.toString(), Toast.LENGTH_SHORT).show()
 
         binding.autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
             // You can get the label or item that the user clicked:
@@ -110,7 +134,7 @@ class InfoDetails : AppCompatActivity() {
                     binding.roomDetailsEdittext.setVisibility(View.INVISIBLE);
                     binding.studentRollNumber.setVisibility(View.INVISIBLE);
                     binding.yearPassoutEdittext.setVisibility(View.INVISIBLE);
-                    binding.branchEdittext.setVisibility(View.INVISIBLE);
+                    binding.branchEdittext.setVisibility(View.VISIBLE);
 
                     binding.driverPassword.setVisibility(View.INVISIBLE);};
                 "Bus Driver"->{
@@ -136,6 +160,7 @@ class InfoDetails : AppCompatActivity() {
         }
 
         binding.btnSubmitDetails.setOnClickListener {
+            val professionn=binding.autoCompleteTextView.text.toString()
             val phno=binding.phoneNumber.text.toString()
             val dob=binding.birthdate.text.toString()
             //student
@@ -147,12 +172,12 @@ class InfoDetails : AppCompatActivity() {
             //driver
             val passwordDriver= binding.driverPassword.text.toString()
 
-            when(binding.autoCompleteTextView.text.toString()){
+            when(professionn){
                 "Student"->{
                     if((phno!="") && (dob!="") && (branch!="") && (yearpass!="")
                         && (numberroll!="") && (detailsroom!="")   ){
                         Toast.makeText(this, binding.autoCompleteTextView.text.toString(), Toast.LENGTH_SHORT).show()
-
+                        saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
                         updateUi(auth.currentUser)
                     }
                     else{
@@ -160,8 +185,10 @@ class InfoDetails : AppCompatActivity() {
                     }
                 };
                 "Teacher"->{
-                    if((phno!="") and (dob!="")   ){
+                    if((phno!="") and (dob!="") and (branch!="")  ){
                         updateUi(auth.currentUser)
+                        saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
+
                     }
                     else{
                         Toast.makeText(this, "Kindly Fill all the Details!!", Toast.LENGTH_SHORT).show()
@@ -171,8 +198,11 @@ class InfoDetails : AppCompatActivity() {
                     if((phno!="") and (dob!="") and (passwordDriver!="")   ){
                         if(binding.driverPassword.text.toString()=="123456") {
                             updateUi(auth.currentUser)
+                            saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
+
                         }
                         else{
+
                             Toast.makeText(this, "Enter correct Password", Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -182,6 +212,8 @@ class InfoDetails : AppCompatActivity() {
                 };
                 "Others"->{
                     if((phno!="") and (dob!="")   ){
+                        saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
+
                         updateUi(auth.currentUser)
                     }
                     else{
@@ -192,13 +224,54 @@ class InfoDetails : AppCompatActivity() {
                     Toast.makeText(this, "Choose Your Profession", Toast.LENGTH_SHORT).show()
                 }
             }
-            
+
 
         }
 
 
 
     }
+
+    private fun saveFirestore(
+
+        professionn: String ,
+        phno: String,
+        dob: String,
+        branch: String =" ",
+        yearpass: String =" ",
+        numberroll: String =" ",
+        detailsroom: String =" ",
+        passwordDriver: String =" "
+    ) {
+        val db =Firebase.firestore
+//        val db =FirebaseFirestore.getInstance()
+        val user: MutableMap<String,Any> = hashMapOf()
+
+        user["block_room_no"]=detailsroom
+        user["branch"]=branch
+        user["dob"]=dob
+        user["email_id"]= auth.currentUser?.email.toString()
+        user["passout_year"]=yearpass
+        user["password"]=passwordDriver
+        user["phone_no"]=phno
+        user["profession"]=professionn
+        user["roll_num"]=numberroll
+
+
+        db.collection("users").document(auth.currentUser?.email.toString())
+            .set(user)
+            .addOnSuccessListener {
+                Toast.makeText(this, "success", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {e ->
+                Log.i("database", "Error adding document", e)
+                Toast.makeText(this, "failure", Toast.LENGTH_SHORT).show()
+            }
+            
+
+
+    }
+
     private fun updateUi(currentUser: FirebaseUser?) {
         if(currentUser==null){
             return
