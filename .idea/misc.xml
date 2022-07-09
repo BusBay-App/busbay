@@ -6,6 +6,7 @@
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/calandericonvector.xml" value="0.115" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/google_icon_for_button.xml" value="0.186" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/google_logo.xml" value="0.1165" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/item_selector.xml" value="0.179" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/layout_details_curve.xml" value="0.1165" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/layout_singin_curve.xml" value="0.186" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/navigation_drawer.xml" value="0.115" />
@@ -16,7 +17,11 @@
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/activity_sign_in.xml" value="0.15625" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/activity_slap_screen.xml" value="0.1621376811594203" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/dropdown_item.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/fragment_dashboard.xml" value="0.1796875" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/fragment_home.xml" value="0.1796875" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/fragment_map.xml" value="0.1796875" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/list_item.xml" value="0.12568306010928962" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/menu/item_menu.xml" value="0.17864583333333334" />
       </map>
     </option>
   </component>
