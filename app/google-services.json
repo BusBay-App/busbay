@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "699132902791-996eipbiav4kk6moj7mov71n3u3oisv6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.busbay",
+            "certificate_hash": "b66da7f9a3b05f1eb3037e952ec8634cae71f520"
+          }
+        },
+        {
           "client_id": "699132902791-ej3a5klfhq07g5t6g4mo2cac5dcn7uh9.apps.googleusercontent.com",
           "client_type": 3
         }

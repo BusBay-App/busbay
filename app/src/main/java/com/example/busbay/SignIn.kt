@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
+//this is branch2
 class SignIn : AppCompatActivity() {
 
     private companion object{
@@ -63,7 +63,7 @@ class SignIn : AppCompatActivity() {
         if(currentUser==null){
             return
         }
-        startActivity(Intent(this,MainActivity::class.java))
+        startActivity(Intent(this,SlapScreen::class.java))  /////////////////////////////////////////////
         finish()
 
     }
