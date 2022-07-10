@@ -96,6 +96,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.6"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_map6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7"/>
 
             <FrameLayout
                 android:id="@+id/framelayout_continuetobuslocatoin"
@@ -107,33 +113,50 @@
                 android:background="@drawable/round_corner_button"
                 android:elevation="3dp"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/guideline_map5">
+                app:layout_constraintBottom_toTopOf="@id/guideline_map5"
+                app:layout_constraintEnd_toEndOf="@id/guideline_map6">
+
                 <Button
                     android:id="@+id/btnToMap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_bus_button_image"
+                    android:layout_gravity="center"
                     android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="20dp"
 
+                    android:layout_marginBottom="5dp"
+
+
+
+                    android:backgroundTint="@color/black"
+                    android:drawableLeft="@drawable/ic_bus_button_image"
                     android:text="BUS LOCATION"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:backgroundTint="@color/black"
-                    app:layout_constraintBottom_toTopOf="@id/guideline3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/guideline2"
-                    android:layout_gravity="center"
-                    />
+                    app:layout_constraintStart_toStartOf="parent" />
 
 
             </FrameLayout>
 
 
+            <Button
+
+                android:id="@+id/btnToBusTimming"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+
+
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/layout_circle_timming"
+                android:backgroundTint="@color/transparent"
+                android:drawableLeft="@drawable/ic_schedule"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_map5"
+                app:layout_constraintStart_toEndOf="@+id/guideline_map6" />
 
             <TextView
                 android:id="@+id/textView4"
