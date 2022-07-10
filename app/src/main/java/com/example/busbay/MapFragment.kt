@@ -1,22 +1,48 @@
 package com.example.busbay
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.busbay.databinding.FragmentMapBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+
+
+////
+
+
 
 class MapFragment : Fragment() {
 
     private lateinit var binding: FragmentMapBinding
     private lateinit var auth: FirebaseAuth
+    var mLocationService: LocationService = LocationService()//
+
+    lateinit var startServiceBtn: Button //
+    lateinit var mServiceIntent: Intent //
+    lateinit var stopServiceBtn: Button //
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,15 +51,114 @@ class MapFragment : Fragment() {
         // Inflate the layout for this fragment
         binding=FragmentMapBinding.inflate(inflater,container,false)
         //Firebase auth
-        auth= Firebase.auth
-
-        //different UI
+        auth= Firebase.auth//different UI
         kichaui()
 
-        binding.btnToMap.setOnClickListener {
-            startActivity(Intent(getActivity(),MapActivity::class.java))  /////////////////////////////////////////////
+//        binding.btnToMap.setOnClickListener {
+//            startActivity(Intent(getActivity(),MapActivity::class.java))  /////////////////////////////////////////////
+//
+//        }
+
+
+        ///////////////////////////////////////////////////////////////////////
+        startServiceBtn=binding.btnToMap //
+        stopServiceBtn=binding.btnstop //
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("message")
+
+
+        var getdata= object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var sb=StringBuilder()
+                val printobjt=snapshot.child("bcBGd3y4kgS2isAAB8FfiGHzV242").getValue()
+//                binding.btnoutput.setText(printobjt.toString())
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
 
         }
+        myRef.addValueEventListener(getdata)
+        myRef.addListenerForSingleValueEvent(getdata)
+
+        //////////////
+        startServiceBtn.setOnClickListener {
+
+            if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+
+                    if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+                        AlertDialog.Builder(requireActivity()).apply {
+                            setTitle("Background permission")
+                            setMessage(R.string.background_location_permission_message)
+//                            setPositiveButton("Start service anyway",
+//                                DialogInterface.OnClickListener { dialog, id ->
+//                                    starServiceFunc()
+//
+//                                })
+                            setPositiveButton("Grant background Permission",
+                                DialogInterface.OnClickListener { dialog, id ->
+                                    requestBackgroundLocationPermission()
+                                })
+                        }.create().show()
+
+                    }else if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED){
+                        Log.i("Baground","permission active")
+                        val intent= Intent(getActivity(),MapsViewActivity::class.java) ///
+                        startActivity(intent)
+                        starServiceFunc()
+                    }
+                }else{
+                    val intent= Intent(getActivity(),MapsViewActivity::class.java)///
+                    startActivity(intent)
+                    starServiceFunc()
+                }
+
+            }else if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+                if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    ///
+                    AlertDialog.Builder(requireActivity())
+                        .setTitle("ACCESS_FINE_LOCATION")
+                        .setMessage("Location permission required")
+                        .setPositiveButton(
+                            "OK"
+                        ) { _, _ ->
+                            requestFineLocationPermission()
+                        }
+                        .create()
+                        .show()
+                                ////////
+//
+
+
+                } else {
+                    requestFineLocationPermission()
+                }
+            }
+
+
+
+        }
+
+        /////////
+        stopServiceBtn.setOnClickListener {
+            Log.i("Baground","attempt to stop service")
+
+
+            stopServiceFunc()
+        }
+        /////////
+
+
 
         return binding.root
     }
@@ -50,6 +175,83 @@ class MapFragment : Fragment() {
 
 
         }
+    }
+    private fun starServiceFunc(){
+        mLocationService = LocationService()
+        mServiceIntent = Intent(getActivity(), mLocationService.javaClass)
+        if (!Util.isMyServiceRunning(mLocationService.javaClass, requireActivity())) {
+            context?.startService(mServiceIntent)
+            Log.i("Baground","service started in startservicfn")
+
+            Toast.makeText(requireActivity(), getString(R.string.service_start_successfully), Toast.LENGTH_SHORT).show()
+        } else {
+            Log.i("Baground","service already running in startservicfn")
+
+            Toast.makeText(requireActivity(), getString(R.string.service_already_running), Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun stopServiceFunc(){
+        mLocationService = LocationService()
+        mServiceIntent = Intent(getActivity(), mLocationService.javaClass)
+        if (Util.isMyServiceRunning(mLocationService.javaClass, requireActivity())) {
+            context?.stopService(mServiceIntent)
+            Toast.makeText(requireActivity(), "Service stopped!!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(requireActivity(), "Service is already stopped!!", Toast.LENGTH_SHORT).show()
+        }
+    }
+    override fun onDestroy() {
+        /*  if (::mServiceIntent.isInitialized) {
+              stopService(mServiceIntent)
+          }*/
+        super.onDestroy()
+    }
+    private fun requestBackgroundLocationPermission() {
+        ActivityCompat.requestPermissions(requireActivity(),
+            arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), MY_BACKGROUND_LOCATION_REQUEST)
+    }
+    private fun requestFineLocationPermission() {
+        ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,), MY_FINE_LOCATION_REQUEST)
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Toast.makeText(requireActivity(), requestCode.toString(), Toast.LENGTH_LONG).show()
+        when (requestCode) {
+            MY_FINE_LOCATION_REQUEST -> {
+
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED) {
+                        requestBackgroundLocationPermission()
+                    }
+
+                } else {
+                    Toast.makeText(requireActivity(), "ACCESS_FINE_LOCATION permission denied", Toast.LENGTH_LONG).show()
+                    if (!ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+                        startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", requireActivity().packageName, null),),)
+                    }
+                }
+                return
+            }
+            MY_BACKGROUND_LOCATION_REQUEST -> {
+
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED) {
+//                        Toast.makeText(this, "Background location Permission Granted", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    Toast.makeText(requireActivity(), "Background location permission denied", Toast.LENGTH_LONG).show()
+                }
+                return
+            }
+        }
+    }
+
+    companion object {
+
+        private const val MY_FINE_LOCATION_REQUEST = 99
+        private const val MY_BACKGROUND_LOCATION_REQUEST = 100
     }
 
 
