@@ -1,22 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/card_4"
+
 
         tools:context=".MapFragment">
 
-        <TextView
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_map1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Map"
-            android:textSize="30sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-    </FrameLayout>
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.27"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_map2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="1"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_map3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_map4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6"/>
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_map_bus"
+            android:layout_width="203dp"
+            android:layout_height="242dp"
+
+            android:layout_marginStart="70dp"
+            android:rotation="-22"
+
+            android:src="@drawable/bustransgif"
+
+            app:layout_constraintBottom_toTopOf="@+id/guideline_map3"
+            app:layout_constraintRight_toLeftOf="@id/guideline_map4"
+
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_map_manrunning"
+            android:layout_width="70dp"
+            android:layout_height="250dp"
+
+            android:rotation="17"
+
+            android:layout_marginStart="27dp"
+            android:src="@drawable/man_running_gif1"
+
+
+            app:layout_constraintBottom_toTopOf="@+id/guideline_map3"
+            app:layout_constraintStart_toEndOf="@+id/gif_map_bus"
+            tools:ignore="MissingConstraints" />
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_map_womenrunning"
+            android:layout_width="70dp"
+            android:layout_height="250dp"
+
+            android:rotation="10"
+
+
+            android:layout_marginStart="27dp"
+            android:src="@drawable/women_running_gif"
+
+            app:layout_constraintBottom_toTopOf="@+id/guideline_map3"
+            app:layout_constraintStart_toEndOf="@+id/gif_map_bus"
+            tools:ignore="MissingConstraints" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/layout_map_curve"
+            app:layout_constraintBottom_toTopOf="@id/guideline_map2"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_map1">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_map5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6"/>
+
+            <FrameLayout
+                android:id="@+id/framelayout_continuetobuslocatoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/round_corner_button"
+                android:elevation="3dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/guideline_map5">
+                <Button
+                    android:id="@+id/btnToMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_bus_button_image"
+                    android:layout_marginHorizontal="12dp"
+
+                    android:text="BUS LOCATION"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintBottom_toTopOf="@id/guideline3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/guideline2"
+                    android:layout_gravity="center"
+                    />
+
+
+            </FrameLayout>
+
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/andika"
+                android:layout_marginBottom="148dp"
+                android:text="Don't miss the bus ever again"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/guideline_map5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

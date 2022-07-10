@@ -78,7 +78,7 @@ class InfoDetails : AppCompatActivity() {
         val fullName = auth.currentUser?.displayName.toString()
         val words = fullName.split("\\s".toRegex()).toTypedArray()
         ////////////////////KICHA
-        if(auth.currentUser?.email =="krishnaveni.unnikrishnan.20063@iitgoa.ac.in"){
+        if(auth.currentUser?.email =="R.string.kicha_email"){
             setTitle("Hey, Beautiful💛" )
             supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#146775")))
         }

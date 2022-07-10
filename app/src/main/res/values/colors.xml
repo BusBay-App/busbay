@@ -15,4 +15,5 @@
     <color name="card_3">#D7BDE2</color>
     <color name="card_4">#D2C3DB</color>
     <color name="transparent">#00000000</color>
+    <color name="actionbarcolor">#FBDF69</color>
 </resources>

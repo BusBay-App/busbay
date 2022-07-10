@@ -1,21 +1,36 @@
 package com.example.busbay
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.busbay.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var  binding: ActivityMainBinding
+    private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//    //_______________________________
-//        supportFragmentManager().hide();
-//        //_________________________________
+
+
+        //Firebase auth
+        auth= Firebase.auth
+
+
+        //Action Bar setup
+        setupActionBar()
+
+
+
 
         val navigationView = binding.bottomNavigation //bottom_navigation
 
@@ -58,4 +73,22 @@ class MainActivity : AppCompatActivity() {
             tr.commitAllowingStateLoss()
 
         }
+    private fun setupActionBar() {
+        //Setting the name and color in action bar
+        setContentView(binding.root)
+        val fullName = auth.currentUser?.displayName.toString()
+        val words = fullName.split("\\s".toRegex()).toTypedArray()
+
+        ////////////////////KICHA
+        if(auth.currentUser?.email == getString(R.string.kicha_email)){
+            setTitle("Hey, Kicha💛" )
+            supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#D2C3DB")))
+        }
+        else{
+            setTitle("Hey, "+words[0] )
+            supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FBDF69")))
+
+        }
+
+    }
 }

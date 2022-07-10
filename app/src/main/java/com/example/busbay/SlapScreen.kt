@@ -1,6 +1,8 @@
 package com.example.busbay
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -20,8 +22,14 @@ class SlapScreen : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
         //Firebase auth
         auth= Firebase.auth
+
+
+        //Action Bar setup
+        setupActionBar()
+
 
         //check if already exits
         val mFireStore = FirebaseFirestore.getInstance()
@@ -45,4 +53,25 @@ class SlapScreen : AppCompatActivity() {
 
 //        Toast.makeText(this, "not runngng", Toast.LENGTH_SHORT).show()
     }
+
+    private fun setupActionBar() {
+        //Setting the name and color in action bar
+        setContentView(binding.root)
+        val fullName = auth.currentUser?.displayName.toString()
+        val words = fullName.split("\\s".toRegex()).toTypedArray()
+
+        ////////////////////KICHA
+        if(auth.currentUser?.email ==getString(R.string.kicha_email)){
+            setTitle("Hey, Beautiful💛" )
+            supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#D2C3DB")))
+        }
+        else{
+            setTitle("Hey, "+words[0] )
+            supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#F9E79F")))
+
+        }
+
+    }
+
+
 }
