@@ -18,10 +18,11 @@
 
         <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#E90606</item>
+        <item name="colorPrimary">#A3E4D7</item>
         <item name="colorPrimaryVariant">#4BB300</item>
         <item name="colorOnPrimary">#D3BD00</item>
 
+<!--        <item name="android:windowDisablePreview">true</item>-->
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

@@ -54,6 +54,10 @@ class MainActivity : AppCompatActivity() {
                     setCurrentFragment(mapFragment)
                     true
                 }
+                R.id.nav_poll ->{
+                    setCurrentFragment(mapFragment)
+                    true
+                }
                 else-> {
                     false
                 }

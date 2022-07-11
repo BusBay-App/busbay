@@ -20,6 +20,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
 import com.example.busbay.databinding.FragmentMapBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -54,10 +55,34 @@ class MapFragment : Fragment() {
         auth= Firebase.auth//different UI
         kichaui()
 
+        //visiblity
+
+        val  user_profession=getDefaults("Profession")
+
+        if(user_profession=="Bus Driver"){
+            binding.btnMap4user.setVisibility(View.INVISIBLE);
+            binding.btnstop.setVisibility(View.INVISIBLE);
+
+        }
+        else{
+            binding.btnToMap.setVisibility(View.INVISIBLE);
+            binding.btnstop.setVisibility(View.INVISIBLE);
+//            binding.btnMap4user.setVisibility(View.VISIBLE);
+
+        }
+
+
+
 //        binding.btnToMap.setOnClickListener {
 //            startActivity(Intent(getActivity(),MapActivity::class.java))  /////////////////////////////////////////////
 //
 //        }
+        binding.btnMap4user.setOnClickListener {
+            val intent= Intent(getActivity(),MapsViewActivity::class.java)///
+            startActivity(intent)
+
+
+        }
 
 
         ///////////////////////////////////////////////////////////////////////
@@ -114,12 +139,12 @@ class MapFragment : Fragment() {
                         Log.i("Baground","permission active")
                         val intent= Intent(getActivity(),MapsViewActivity::class.java) ///
                         startActivity(intent)
-                        starServiceFunc()
+                        starServiceFunc(user_profession)
                     }
                 }else{
                     val intent= Intent(getActivity(),MapsViewActivity::class.java)///
                     startActivity(intent)
-                    starServiceFunc()
+                    starServiceFunc(user_profession)
                 }
 
             }else if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
@@ -154,7 +179,7 @@ class MapFragment : Fragment() {
             Log.i("Baground","attempt to stop service")
 
 
-            stopServiceFunc()
+            stopServiceFunc(user_profession)
         }
         /////////
 
@@ -176,9 +201,21 @@ class MapFragment : Fragment() {
 
         }
     }
-    private fun starServiceFunc(){
+    private fun starServiceFunc(user_profession: String?){
         mLocationService = LocationService()
         mServiceIntent = Intent(getActivity(), mLocationService.javaClass)
+
+
+        if(user_profession=="Bus Driver"){
+            binding.btnMap4user.setVisibility(View.INVISIBLE);
+            binding.btnToMap.setVisibility(View.INVISIBLE);
+            binding.btnstop.setVisibility(View.VISIBLE);
+        }
+        else{
+            binding.btnToMap.setVisibility(View.INVISIBLE);
+            binding.btnstop.setVisibility(View.INVISIBLE);
+        }
+
         if (!Util.isMyServiceRunning(mLocationService.javaClass, requireActivity())) {
             context?.startService(mServiceIntent)
             Log.i("Baground","service started in startservicfn")
@@ -190,9 +227,19 @@ class MapFragment : Fragment() {
             Toast.makeText(requireActivity(), getString(R.string.service_already_running), Toast.LENGTH_SHORT).show()
         }
     }
-    private fun stopServiceFunc(){
+    private fun stopServiceFunc(user_profession: String?){
         mLocationService = LocationService()
         mServiceIntent = Intent(getActivity(), mLocationService.javaClass)
+
+        if(user_profession=="Bus Driver"){
+            binding.btnMap4user.setVisibility(View.INVISIBLE);
+            binding.btnToMap.setVisibility(View.VISIBLE);
+            binding.btnstop.setVisibility(View.INVISIBLE);
+        }
+        else{
+            binding.btnToMap.setVisibility(View.INVISIBLE);
+            binding.btnstop.setVisibility(View.INVISIBLE);
+        }
         if (Util.isMyServiceRunning(mLocationService.javaClass, requireActivity())) {
             context?.stopService(mServiceIntent)
             Toast.makeText(requireActivity(), "Service stopped!!", Toast.LENGTH_SHORT).show()
@@ -246,6 +293,11 @@ class MapFragment : Fragment() {
                 return
             }
         }
+    }
+
+    fun getDefaults(key: String?): String? {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(requireActivity())
+        return preferences.getString(key, null)
     }
 
     companion object {

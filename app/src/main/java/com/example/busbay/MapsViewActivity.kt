@@ -1,7 +1,5 @@
 package com.example.busbay
 
-import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.busbay.databinding.ActivityMapsViewBinding
@@ -9,6 +7,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -38,6 +37,7 @@ class MapsViewActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        
     }
 
     /**
@@ -90,9 +90,14 @@ class MapsViewActivity : AppCompatActivity(), OnMapReadyCallback {
 //                Toast.makeText(this@MapsActivity,"ltt"+ltt+" lgg"+lgg ,Toast.LENGTH_SHORT).show()
                 mMap.clear()
                 val sydney = LatLng(ltt.toDouble(),lgg.toDouble())
-                mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 
-//                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
+                mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"));
+//                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+
+
+
 
                 if(firstTimeLocation==1){
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
@@ -115,4 +120,5 @@ class MapsViewActivity : AppCompatActivity(), OnMapReadyCallback {
         myRef.addListenerForSingleValueEvent(getdata)
 
     }
+
 }

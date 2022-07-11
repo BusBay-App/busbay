@@ -3,27 +3,22 @@ package com.example.busbay
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnTouchListener
 import android.widget.ArrayAdapter
-import android.widget.CalendarView
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import com.example.busbay.databinding.ActivityInfoDetailsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.type.Date
-import kotlinx.coroutines.delay
 import java.util.*
 
 
@@ -43,6 +38,8 @@ class InfoDetails : AppCompatActivity() {
 
     //Firebase auth
     auth= Firebase.auth
+
+
 //
 //    //check if already exits
 //    val mFireStore = FirebaseFirestore.getInstance()
@@ -71,6 +68,8 @@ class InfoDetails : AppCompatActivity() {
         binding.branchEdittext.setVisibility(View.INVISIBLE);
 
         binding.driverPassword.setVisibility(View.INVISIBLE);
+
+
 
 
         //Setting the name and color in action bar
@@ -176,6 +175,7 @@ class InfoDetails : AppCompatActivity() {
                 "Student"->{
                     if((phno!="") && (dob!="") && (branch!="") && (yearpass!="")
                         && (numberroll!="") && (detailsroom!="")   ){
+                        saveProfessionDatalocally("Student")
                         Toast.makeText(this, binding.autoCompleteTextView.text.toString(), Toast.LENGTH_SHORT).show()
                         saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
                         updateUi(auth.currentUser)
@@ -186,6 +186,7 @@ class InfoDetails : AppCompatActivity() {
                 };
                 "Teacher"->{
                     if((phno!="") and (dob!="") and (branch!="")  ){
+                        saveProfessionDatalocally("Teacher")
                         updateUi(auth.currentUser)
                         saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
 
@@ -197,6 +198,8 @@ class InfoDetails : AppCompatActivity() {
                 "Bus Driver"->{
                     if((phno!="") and (dob!="") and (passwordDriver!="")   ){
                         if(binding.driverPassword.text.toString()=="123456") {
+                            saveProfessionDatalocally("Bus Driver")
+
                             updateUi(auth.currentUser)
                             saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
 
@@ -207,6 +210,7 @@ class InfoDetails : AppCompatActivity() {
                         }
                     }
                     else{
+                        saveProfessionDatalocally("Others")
                         Toast.makeText(this, "Kindly Fill all the Details!!", Toast.LENGTH_SHORT).show()
                     }
                 };
@@ -231,6 +235,16 @@ class InfoDetails : AppCompatActivity() {
 
 
     }
+
+    private fun saveProfessionDatalocally(profession: String) {
+//        val sharedPreferences =getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = preferences.edit()
+        editor.putString("Profession", profession)
+        editor.apply()
+    }
+
+
 
     private fun saveFirestore(
 
