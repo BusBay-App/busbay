@@ -8,9 +8,12 @@
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/google_logo.xml" value="0.1165" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/ic_dashboard.xml" value="0.188" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/item_selector.xml" value="0.179" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/layout_btn_home.xml" value="0.126" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/layout_circle_timming.xml" value="0.1295" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/layout_details_curve.xml" value="0.1165" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/layout_home_background.xml" value="0.1155" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/layout_map_curve.xml" value="0.187" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/layout_profile_pic.xml" value="0.1155" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/layout_singin_curve.xml" value="0.186" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/navigation_drawer.xml" value="0.115" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/round_corner_button.xml" value="0.186" />
@@ -23,9 +26,10 @@
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/activity_slap_screen.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/dropdown_item.xml" value="0.1621376811594203" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/fragment_dashboard.xml" value="0.1796875" />
-        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/fragment_home.xml" value="0.1796875" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/fragment_home.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/fragment_map.xml" value="0.22" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/fragment_poll.xml" value="0.1796875" />
+        <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/layout_timming_pop_up.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/layout/list_item.xml" value="0.12568306010928962" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/menu/item_menu.xml" value="0.17864583333333334" />
       </map>

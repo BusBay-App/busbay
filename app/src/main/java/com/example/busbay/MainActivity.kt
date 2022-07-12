@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         val homeFragment= HomeFragment()
         val mapFragment= MapFragment()
         val dashboardFragment= DashboardFragment()
+        val pollFragment= PollFragment()
 
         setCurrentFragment(homeFragment)
 
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_poll ->{
-                    setCurrentFragment(mapFragment)
+                    setCurrentFragment(pollFragment)
                     true
                 }
                 else-> {
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             setTitle("Hey, "+words[0] )
-            supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FBDF69")))
+            supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#7dd3f5")))
 
         }
 

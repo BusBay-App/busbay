@@ -12,12 +12,13 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.PopupWindow
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
@@ -44,6 +45,7 @@ class MapFragment : Fragment() {
     lateinit var startServiceBtn: Button //
     lateinit var mServiceIntent: Intent //
     lateinit var stopServiceBtn: Button //
+    lateinit var busTimmingBtn: Button //
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,9 +87,11 @@ class MapFragment : Fragment() {
         }
 
 
+
         ///////////////////////////////////////////////////////////////////////
         startServiceBtn=binding.btnToMap //
         stopServiceBtn=binding.btnstop //
+        busTimmingBtn=binding.btnToBusTimming
 
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("message")
@@ -182,6 +186,22 @@ class MapFragment : Fragment() {
             stopServiceFunc(user_profession)
         }
         /////////
+        busTimmingBtn.setOnClickListener {
+            val window=PopupWindow(requireActivity())
+            val view =layoutInflater.inflate(R.layout.layout_timming_pop_up,null)
+            window.contentView=view
+//            val imageView=view.findViewById<CardView>(R.id.card_timming)
+            val crossbtn=view.findViewById<Button>(R.id.close_pop_up)
+            crossbtn.setOnClickListener{
+                window.dismiss()
+            }
+//            R.layout.activity_main.setOnTouchListener(this)
+
+
+
+            window.showAtLocation(requireView() ,Gravity.CENTER,0,0)
+
+        }
 
 
 
