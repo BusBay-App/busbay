@@ -1,5 +1,6 @@
 package com.example.busbay
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -24,6 +25,9 @@ class HomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     lateinit var imgProfilePic: ShapeableImageView //
 
+    lateinit var btnComplain: Button //
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,18 +36,36 @@ class HomeFragment : Fragment() {
 
         binding= FragmentHomeBinding.inflate(inflater,container,false)
         //Firebase auth
-        auth= Firebase.auth//different UI
+        auth= Firebase.auth
+        //intialising  button
+        btnComplain=binding.btnToComplain
 
+        //different UI
+
+        //setting profile pic
+        setProfilepic()
+
+        btnComplain.setOnClickListener {
+            val intent= Intent(getActivity(),ComplainActivity::class.java)///
+            startActivity(intent)
+        }
+
+
+
+
+        return binding.root
+    }
+
+    private fun setProfilepic() {
         imgProfilePic=binding.idProfliePic
         val profileimageURL=auth.currentUser?.photoUrl.toString()
 
 
 
         Glide.with(this).load(profileimageURL).into(imgProfilePic);
-
-
-        return binding.root
     }
+
+
 
 
 }
