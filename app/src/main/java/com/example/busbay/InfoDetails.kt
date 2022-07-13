@@ -176,6 +176,10 @@ class InfoDetails : AppCompatActivity() {
                     if((phno!="") && (dob!="") && (branch!="") && (yearpass!="")
                         && (numberroll!="") && (detailsroom!="")   ){
                         saveProfessionDatalocally("Student")
+                        saveRollNoDatalocally(numberroll)
+                        savePhoneNumberDatalocally(phno)
+                        saveRoomDetailsDatalocally(detailsroom)
+
                         Toast.makeText(this, binding.autoCompleteTextView.text.toString(), Toast.LENGTH_SHORT).show()
                         saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
                         updateUi(auth.currentUser)
@@ -186,7 +190,11 @@ class InfoDetails : AppCompatActivity() {
                 };
                 "Teacher"->{
                     if((phno!="") and (dob!="") and (branch!="")  ){
+
                         saveProfessionDatalocally("Teacher")
+                        saveRollNoDatalocally(numberroll)
+                        savePhoneNumberDatalocally(phno)
+                        saveRoomDetailsDatalocally(detailsroom)
                         updateUi(auth.currentUser)
                         saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
 
@@ -199,6 +207,9 @@ class InfoDetails : AppCompatActivity() {
                     if((phno!="") and (dob!="") and (passwordDriver!="")   ){
                         if(binding.driverPassword.text.toString()=="123456") {
                             saveProfessionDatalocally("Bus Driver")
+                            saveRollNoDatalocally(numberroll)
+                            savePhoneNumberDatalocally(phno)
+                            saveRoomDetailsDatalocally(detailsroom)
 
                             updateUi(auth.currentUser)
                             saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
@@ -210,12 +221,16 @@ class InfoDetails : AppCompatActivity() {
                         }
                     }
                     else{
-                        saveProfessionDatalocally("Others")
+
                         Toast.makeText(this, "Kindly Fill all the Details!!", Toast.LENGTH_SHORT).show()
                     }
                 };
                 "Others"->{
                     if((phno!="") and (dob!="")   ){
+                        saveProfessionDatalocally("Others")
+                        saveRollNoDatalocally(numberroll)
+                        savePhoneNumberDatalocally(phno)
+                        saveRoomDetailsDatalocally(detailsroom)
                         saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
 
                         updateUi(auth.currentUser)
@@ -243,6 +258,28 @@ class InfoDetails : AppCompatActivity() {
         editor.putString("Profession", profession)
         editor.apply()
     }
+    private fun saveRollNoDatalocally(roll_no: String) {
+//        val sharedPreferences =getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = preferences.edit()
+        editor.putString("Roll_No", roll_no)
+        editor.apply()
+    }
+    private fun saveRoomDetailsDatalocally(room_deatils: String) {
+//        val sharedPreferences =getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = preferences.edit()
+        editor.putString("Room_Details", room_deatils)
+        editor.apply()
+    }
+    private fun savePhoneNumberDatalocally(phoneNo: String) {
+//        val sharedPreferences =getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = preferences.edit()
+        editor.putString("Phone_No", phoneNo)
+        editor.apply()
+    }
+
 
 
 
