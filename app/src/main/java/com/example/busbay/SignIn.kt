@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.preference.PreferenceManager
 import com.example.busbay.databinding.ActivitySignInBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -17,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-//this is branch2
+//this is branch7
 class SignIn : AppCompatActivity() {
 
     private companion object{
@@ -32,6 +33,7 @@ class SignIn : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_sign_in)
         binding= DataBindingUtil.setContentView(this,R.layout.activity_sign_in)
+        setContentView(binding.root)
 
         auth= Firebase.auth
 
@@ -59,12 +61,16 @@ class SignIn : AppCompatActivity() {
         updateUi(currentUser)
     }
 
+
+
     private fun updateUi(currentUser: FirebaseUser?) {
+
         if(currentUser==null){
             return
         }
         startActivity(Intent(this,SlapScreen::class.java))  /////////////////////////////////////////////
         finish()
+
 
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
