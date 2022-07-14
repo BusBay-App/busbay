@@ -29,10 +29,10 @@
             android:id="@+id/floatingActionButtonPoll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="100dp"
             android:clickable="true"
-            android:text="Add issue"
+            android:text="Add Poll"
 
             app:backgroundTint="#A3E4D7"
             app:layout_constraintBottom_toBottomOf="parent"

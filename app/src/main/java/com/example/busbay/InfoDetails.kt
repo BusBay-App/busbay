@@ -179,6 +179,8 @@ class InfoDetails : AppCompatActivity() {
                         saveRollNoDatalocally(numberroll)
                         savePhoneNumberDatalocally(phno)
                         saveRoomDetailsDatalocally(detailsroom)
+                        savePassOutYearDatalocally(yearpass)
+                        saveBranchDatalocally(branch)
 
                         Toast.makeText(this, binding.autoCompleteTextView.text.toString(), Toast.LENGTH_SHORT).show()
                         saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
@@ -195,7 +197,10 @@ class InfoDetails : AppCompatActivity() {
                         saveRollNoDatalocally(numberroll)
                         savePhoneNumberDatalocally(phno)
                         saveRoomDetailsDatalocally(detailsroom)
+                        savePassOutYearDatalocally(yearpass)
+                        saveBranchDatalocally(branch)
                         updateUi(auth.currentUser)
+
                         saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
 
                     }
@@ -210,6 +215,8 @@ class InfoDetails : AppCompatActivity() {
                             saveRollNoDatalocally(numberroll)
                             savePhoneNumberDatalocally(phno)
                             saveRoomDetailsDatalocally(detailsroom)
+                            savePassOutYearDatalocally(yearpass)
+                            saveBranchDatalocally(branch)
 
                             updateUi(auth.currentUser)
                             saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
@@ -231,6 +238,8 @@ class InfoDetails : AppCompatActivity() {
                         saveRollNoDatalocally(numberroll)
                         savePhoneNumberDatalocally(phno)
                         saveRoomDetailsDatalocally(detailsroom)
+                        savePassOutYearDatalocally(yearpass)
+                        saveBranchDatalocally(branch)
                         saveFirestore(professionn,phno,dob,branch,yearpass,numberroll,detailsroom,passwordDriver)
 
                         updateUi(auth.currentUser)
@@ -277,6 +286,20 @@ class InfoDetails : AppCompatActivity() {
         val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = preferences.edit()
         editor.putString("Phone_No", phoneNo)
+        editor.apply()
+    }
+    private fun savePassOutYearDatalocally(yearpass: String) {
+//        val sharedPreferences =getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = preferences.edit()
+        editor.putString("PassOutYear", yearpass)
+        editor.apply()
+    }
+    private fun saveBranchDatalocally(branch: String) {
+//        val sharedPreferences =getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = preferences.edit()
+        editor.putString("Branch", branch)
         editor.apply()
     }
 

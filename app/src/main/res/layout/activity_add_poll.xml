@@ -1,9 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddPollActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/card_2"
+        tools:context=".AddPollActivity"
+        >
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidline_addpoll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidline_addpoll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipgroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintStart_toEndOf="@id/guidline_addpoll2"
+            app:layout_constraintTop_toTopOf="@id/guidline_addpoll1">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_btech"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:text="B-Tech" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_mtech"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+
+                android:text="M-Tech" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_phd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+
+                android:text="Phd" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            android:id="@+id/titleTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/guidline_addpoll2"
+            android:text="Poll Filter"
+            android:fontFamily="@font/andika"
+            android:textStyle="bold"
+
+            android:textColor="#272424"
+            app:layout_constraintBottom_toTopOf="@+id/guidline_addpoll1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.64" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
