@@ -92,7 +92,7 @@ class MapsViewActivity : AppCompatActivity(), OnMapReadyCallback {
                 val sydney = LatLng(ltt.toDouble(),lgg.toDouble())
 
 
-                mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"));
+                mMap.addMarker(MarkerOptions().position(sydney).title("Bus Location"));
 //                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
 

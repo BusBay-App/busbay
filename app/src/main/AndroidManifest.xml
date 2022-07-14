@@ -20,10 +20,12 @@
         android:theme="@style/Theme.BusBay1"
         tools:targetApi="31">
         <activity
+            android:name=".AddPollActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddComplain"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan|adjustResize"
-            />
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".ComplainActivity"
             android:exported="false" />
