@@ -223,10 +223,6 @@ class AddPollActivity : AppCompatActivity() {
             else if(option1?.text.toString()==""){
                 Toast.makeText(this, "Enter Option1 to Save", Toast.LENGTH_SHORT).show()
             }
-            else if(option2!!.isVisible){
-                Toast.makeText(this, "You should atleast have 2 option's to Save", Toast.LENGTH_SHORT).show()
-
-            }
             else if(option2?.text.toString()==""){
                 Toast.makeText(this, "Enter Option2 to Save", Toast.LENGTH_SHORT).show()
             }
