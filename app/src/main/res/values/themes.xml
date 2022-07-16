@@ -45,4 +45,50 @@
         <item name="android:headerBackground">#968F00</item>
     </style>
 
+
+    <style name="Theme.BusBay2" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+        <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#12F4C7</item>
+        <item name="colorPrimaryVariant">#4BB300</item>
+        <item name="colorOnPrimary">#D3BD00</item>
+
+        <!--        <item name="android:windowDisablePreview">true</item>-->
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/purple_700</item>
+        <item name="colorSecondaryVariant">@color/purple_500</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">#BFBEBE</item>
+        <!-- Customize your theme here. -->
+
+        <!--        actionbar-->
+        <item name="android:actionMenuTextColor">#000000</item>
+
+    </style>
+    <style name="Theme.BusBay3" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+        <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryVariant">#4BB300</item>
+        <item name="colorOnPrimary">#D3BD00</item>
+
+        <!--        <item name="android:windowDisablePreview">true</item>-->
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/purple_700</item>
+        <item name="colorSecondaryVariant">@color/purple_500</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">#BFBEBE</item>
+        <!-- Customize your theme here. -->
+
+        <!--        actionbar-->
+        <item name="android:actionMenuTextColor">#000000</item>
+
+    </style>
+
 </resources>
