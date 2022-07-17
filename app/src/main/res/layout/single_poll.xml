@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+
+    app:cardBackgroundColor="@color/card_2"
+    android:layout_margin="16dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginVertical="6dp">
+
+            <TextView
+                android:id="@+id/txtv_relative_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_background_question_poll"
+                android:padding="12dp"
+                android:textSize="20sp"
+                android:inputType="textMultiLine"
+                android:layout_marginBottom="14dp"
+                android:fontFamily="@font/andika"
+
+                android:text="Question"/>
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_horizontal_line"
+                />
+        <Button
+            android:id="@+id/opt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.BusBay4"
+            android:background="@drawable/layout_answer_poll"
+            android:padding="2dp"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/andika"
+
+            android:textSize="10dp"
+
+
+            android:drawableLeft="@drawable/ic_button_unchecked"
+
+
+            android:text="Option1"
+            />
+        <Button
+            android:id="@+id/opt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.BusBay4"
+            android:background="@drawable/layout_answer_poll"
+            android:padding="2dp"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/andika"
+            android:textSize="10dp"
+
+
+            android:drawableLeft="@drawable/ic_button_unchecked"
+
+
+            android:text="Option2"
+            />
+
+        <Button
+            android:id="@+id/opt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.BusBay4"
+            android:background="@drawable/layout_answer_poll"
+            android:padding="2dp"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/andika"
+            android:textSize="10dp"
+
+            android:drawableLeft="@drawable/ic_button_unchecked"
+
+
+            android:text="Option3"
+            />
+
+        <Button
+            android:id="@+id/opt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.BusBay4"
+            android:background="@drawable/layout_answer_poll"
+            android:padding="2dp"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/andika"
+            android:textSize="10dp"
+
+            android:drawableLeft="@drawable/ic_button_unchecked"
+
+
+            android:text="Option4"
+            />
+
+        <Button
+            android:id="@+id/opt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.BusBay4"
+            android:background="@drawable/layout_answer_poll"
+            android:padding="2dp"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/andika"
+            android:textSize="10dp"
+
+            android:drawableLeft="@drawable/ic_button_unchecked"
+
+
+            android:text="Option5"
+            />
+
+        <Button
+            android:id="@+id/opt6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.BusBay4"
+            android:background="@drawable/layout_answer_poll"
+            android:padding="2dp"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/andika"
+            android:textSize="10dp"
+
+            android:drawableLeft="@drawable/ic_button_unchecked"
+
+
+            android:text="Option6"
+            />
+        <Button
+            android:id="@+id/opt7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.BusBay4"
+            android:background="@drawable/layout_answer_poll"
+            android:padding="2dp"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/andika"
+            android:textSize="10dp"
+
+            android:drawableLeft="@drawable/ic_button_unchecked"
+
+
+            android:text="Option7"
+            />
+
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

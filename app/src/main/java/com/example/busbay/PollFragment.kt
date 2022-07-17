@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.preference.PreferenceManager
 import com.example.busbay.databinding.FragmentMapBinding
 import com.example.busbay.databinding.FragmentPollBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -19,6 +20,8 @@ class PollFragment : Fragment() {
     private lateinit var binding: FragmentPollBinding
     private lateinit var auth: FirebaseAuth
     lateinit var addPoll: FloatingActionButton //
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,15 +34,27 @@ class PollFragment : Fragment() {
 
         addPoll=binding.floatingActionButtonPoll
 
-        addPoll.setOnClickListener { GotoAddPollactivity()        }
+        addPoll.setOnClickListener { GotoAddPollactivity()}
+
+
+
+
 
         return binding.root
     }
+
+
 
     private fun GotoAddPollactivity() {
         val intent= Intent(getActivity(),AddPollActivity::class.java) ///
         startActivity(intent)
     }
+
+    fun getDefaults(key: String?): String? {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(requireActivity())
+        return preferences.getString(key, null)
+    }
+
 
 
 }

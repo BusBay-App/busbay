@@ -315,7 +315,7 @@ class AddPollActivity : AppCompatActivity() {
                                     cleanup()
 
                                     Toast.makeText(this, "volley error", Toast.LENGTH_SHORT).show()
-                                   
+
                                 }){
                                 override fun getParams(): MutableMap<String, String>? {
 //(unique_id,Date_Time,Email_Id,Question,Option1,Option2,Option3,Option4,Option5,Option6,Option7	Count1	Count2	Count3	Count4	Count5	Count6	Count7)
@@ -421,10 +421,6 @@ class AddPollActivity : AppCompatActivity() {
 
     }
 
-    fun getDefaults(key: String?): String? {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        return preferences.getString(key, null)
-    }
 
 
 }
