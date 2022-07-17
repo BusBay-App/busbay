@@ -1,6 +1,7 @@
 package com.example.busbay
 
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,14 +12,23 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.core.view.isVisible
+import androidx.preference.PreferenceManager
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.busbay.databinding.ActivityAddPollBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.common.io.Files.append
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlinx.coroutines.delay as delay1
 
 
 class AddPollActivity : AppCompatActivity() {
@@ -60,6 +70,7 @@ class AddPollActivity : AppCompatActivity() {
     lateinit var chip20: Chip //
 
     var numberOptions=1
+    var flag=0
 
     ///OPTIONS INtialisation
 
@@ -216,17 +227,20 @@ class AddPollActivity : AppCompatActivity() {
 
         ////SAVE POLL
         button_save?.setOnClickListener {
-
+            flag=0
             if(questiontextview?.text.toString()==""){
                 Toast.makeText(this, "Enter Question to Save", Toast.LENGTH_SHORT).show()
+
             }
             else if(option1?.text.toString()==""){
                 Toast.makeText(this, "Enter Option1 to Save", Toast.LENGTH_SHORT).show()
             }
             else if(option2?.text.toString()==""){
                 Toast.makeText(this, "Enter Option2 to Save", Toast.LENGTH_SHORT).show()
+
             }
             else{
+                flag=1
                 question= questiontextview?.text.toString()
                 optn1= option1?.text.toString()
                 optn2= option2?.text.toString()
@@ -245,45 +259,146 @@ class AddPollActivity : AppCompatActivity() {
 
 
         //////////////////Publish Poll BUTTON
+
         btnPublishPoll.setOnClickListener {
+                if(flag==1){
 
-                var count=0;
-                binding.chipsGroupAlltags.children
-                    .toList()
-                    .filter { (it as Chip).isChecked }
-                    .forEach {
+                    flag=0
 
-                        Log.i("chips", (it as Chip).text as String)
-                        count++
+                    val array_chips_selected= mutableListOf<String>()
+
+                    binding.chipsGroupAlltags.children
+                        .toList()
+                        .filter { (it as Chip).isChecked }
+                        .forEach {
+                            array_chips_selected+=(it as Chip).text as String
+                            Log.i("chips", (it as Chip).text as String)
+
+                        }
+
+//                    if(true){
+
+                        /////////////Current Date
+
+                        val current = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            LocalDateTime.now()
+                        } else {
+                            TODO("VERSION.SDK_INT < O")
+                        }
+
+                        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSS")
+                        val formatted = current.format(formatter)
+                        val email= auth.currentUser?.email.toString()
+//                        val branch_year=getDefaults("Branch")+ getDefaults(" PassOutYear")?.takeLast(2)
+                        var alltags=""
+                        for(i in 0 until array_chips_selected.size){
+                            alltags+=array_chips_selected[i]+" "
+                        }
+
+
+                        /////////////////https://script.google.com/u/1/home/projects/1L2HatJhLx3paPS8GJYTDgJTUbfSb-szXa2BycETsShxXERaHq10QHXHt/edit
+                        val url="https://script.google.com/macros/s/AKfycbxn8rEqSnF9MdQjE-KpD1dUMCPYQITi5DV_iBcWhT5_GDjKNuEGJLYamP9JhPEYEL4o4Q/exec"
+
+//                        for(i in 0..array_chips_selected.size-1){
+//                            Log.i("post",array_chips_selected[i])
+//                            var target_branch_year=array_chips_selected[i]
+
+                            val stringRequest=object: StringRequest(
+                                Request.Method.POST,url,
+                                Response.Listener {
+                                    cleanup()
+
+                                    Toast.makeText(this, "Succes added", Toast.LENGTH_SHORT).show()
+
+                                },
+                                Response.ErrorListener {
+                                    cleanup()
+
+                                    Toast.makeText(this, "volley error", Toast.LENGTH_SHORT).show()
+                                   
+                                }){
+                                override fun getParams(): MutableMap<String, String>? {
+//(unique_id,Date_Time,Email_Id,Question,Option1,Option2,Option3,Option4,Option5,Option6,Option7	Count1	Count2	Count3	Count4	Count5	Count6	Count7)
+
+
+                                    val params=HashMap<String,String> ()
+
+                                    params["Date"]=formatted.toString()
+                                    params["Email_Id"]=email
+                                    params["Branch_Year"]=alltags
+                                    params["Question"]=question
+                                    params["Option1"]=optn1
+                                    params["Option2"]=optn2
+                                    params["Option3"]=optn3
+                                    params["Option4"]=optn4
+                                    params["Option5"]=optn5
+                                    params["Option6"]=optn6
+                                    params["Option7"]=optn7
+                                    params["c1"]="0"
+                                    params["c2"]="0"
+                                    params["c3"]="0"
+                                    params["c4"]="0"
+                                    params["c5"]="0"
+                                    params["c6"]="0"
+                                    params["c7"]="0"
+
+                                    return params
+                                }
+                            }
+                            val queue= Volley.newRequestQueue(this)
+                            queue.add(stringRequest)
+
+
+//                        }
+
+
+
+                    ////////////////////////////////////////////////////////
+//                    }
+
+
+
+
+                    // get all selected chips
+//                    binding.chipsGroupAlltags.children
+//                        .toList()
+//                        .filter { (it as Chip).isChecked }
+//                        .forEach {
+//
+//                            Log.i("chips", (it as Chip).text as String)
+//                            count++
+//                        }
+
+
+                    //Setting everything to deafult after uploading Poll
+                    for(i in 0..chipsArray.size-1){
+                        chipsArray[i].isChecked=false
                     }
-                //Setting everything to deafult after uploading Poll
-                for(i in 0..chipsArray.size-1){
-                    chipsArray[i].isChecked=false
-                }
 
 //                for(i in 0.. optionsArray.size-1){
 //                    optionsArray[i]?.setText("")
 //                }
 
 
-                numberOptions=1
+                    numberOptions=1
 //            for(i in 0..arrayVariableSave.size-1){
 //                arrayVariableSave[i]=""
 //
 //            }
-             question=""
-            optn1=""
-             optn2=""
-             optn3=""
-                 optn4=""
-                 optn5=""
-                optn6=""
-                 optn7=""
 
-                for(i in 1..optionsArray.size-1){
+                    for(i in 1..optionsArray.size-1){
 
-                    optionsArray[i]?.setVisibility(View.GONE);
+                        optionsArray[i]?.setVisibility(View.GONE);
+                    }
+
+
+
                 }
+                else{
+                    Toast.makeText(this, "Please Enter Poll/Save it", Toast.LENGTH_SHORT).show()
+                }
+
+
 
 
 
@@ -292,6 +407,23 @@ class AddPollActivity : AppCompatActivity() {
 
 
 
+    }
+
+    private fun cleanup() {
+        question=""
+        optn1=""
+        optn2=""
+        optn3=""
+        optn4=""
+        optn5=""
+        optn6=""
+        optn7=""
+
+    }
+
+    fun getDefaults(key: String?): String? {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        return preferences.getString(key, null)
     }
 
 
