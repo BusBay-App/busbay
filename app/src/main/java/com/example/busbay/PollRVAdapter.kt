@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
     : RecyclerView.Adapter<PollRVAdapter.ReadViewHolder>()  {
 
+
+
     class ReadViewHolder(view: View):RecyclerView.ViewHolder(view){
 
         val date :TextView=view.findViewById(R.id.txtv_Date)
@@ -60,6 +62,23 @@ class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
         holder.itemc5.text=book.itemc5
         holder.itemc6.text=book.itemc6
         holder.itemc7.text=book.itemc7
+        if(book.itemoptn3==""){
+            holder.itemoptn3.visibility = View.GONE
+        }
+
+        if(book.itemoptn4==""){
+            holder.itemoptn4.visibility = View.GONE
+        }
+        if(book.itemoptn5==""){
+            holder.itemoptn5.visibility = View.GONE
+        }
+        if(book.itemoptn6==""){
+            holder.itemoptn6.visibility = View.GONE
+        }
+        if(book.itemoptn7==""){
+            holder.itemoptn7.visibility = View.GONE
+        }
+
     }
 
     override fun getItemCount(): Int {

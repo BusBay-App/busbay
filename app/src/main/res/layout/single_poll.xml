@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Branch"
-                android:padding="4dp"
+                android:padding="12dp"
                 android:layout_gravity="left"
                 android:layout_marginRight="6dp"
 
@@ -40,7 +40,7 @@
                 android:layout_height="match_parent"
                 android:text="Date"
                 android:layout_gravity="center"
-                android:padding="4dp"
+                android:padding="12dp"
                 android:layout_marginRight="4dp"
 
                 android:background="@drawable/layout_branch_rv"
@@ -51,7 +51,7 @@
                 android:layout_height="match_parent"
                 android:text="atharva.bhanage.20042@iitgoa.ac.in"
                 android:layout_gravity="center"
-                android:padding="4dp"
+                android:padding="12dp"
                 android:background="@drawable/layout_branch_rv"
                 />
         </LinearLayout>

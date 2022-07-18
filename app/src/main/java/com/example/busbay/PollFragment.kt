@@ -35,6 +35,8 @@ class PollFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var layoutManager: LinearLayoutManager
     lateinit var recyclerAdapter:PollRVAdapter
+    lateinit var proffession_year:String
+
 
 
 
@@ -56,7 +58,25 @@ class PollFragment : Fragment() {
         readProgressBar=binding.readProgressBar
         layoutManager= LinearLayoutManager(requireActivity())
 
+        proffession_year=getDefaults("Branch")+((getDefaults("PassOutYear")?.toInt())!! -2000-4).toString()
 
+
+
+
+
+
+        addPoll.setOnClickListener { GotoAddPollactivity()}
+
+
+
+
+
+
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
         val bookList= arrayListOf<BookofPoll>()
         val queue= Volley.newRequestQueue(requireActivity())
         val url="https://script.google.com/macros/s/AKfycbyWva0kwG5EbOYbLb1OV2G92Xn7sBTEodw6oPo5bqV5Z77dYm1QDIgMN4rqI8rY34zOZA/exec"
@@ -74,32 +94,35 @@ class PollFragment : Fragment() {
                         if(listfAlltags[i]==""){
                             break
                         }
+                        if(proffession_year!=listfAlltags[i]){
+                            continue
+                        }
 
-                    val bookObject = BookofPoll(
-                        bookJasonObject.getString("date"),
-                        bookJasonObject.getString("itememail_id"),
+                        val bookObject = BookofPoll(
+                            bookJasonObject.getString("date").split(" ")[0],
+                            bookJasonObject.getString("itememail_id"),
 //                        bookJasonObject.getString("itembranchyear"),
-                        listfAlltags[i],
-                        bookJasonObject.getString("itemquestion"),
-                        bookJasonObject.getString("itemoptn1"),
-                        bookJasonObject.getString("itemoptn2"),
-                        bookJasonObject.getString("itemoptn3"),
-                        bookJasonObject.getString("itemoptn4"),
-                        bookJasonObject.getString("itemoptn5"),
-                        bookJasonObject.getString("itemoptn6"),
-                        bookJasonObject.getString("itemoptn7"),
-                        bookJasonObject.getString("itemc1"),
-                        bookJasonObject.getString("itemc2"),
-                        bookJasonObject.getString("itemc3"),
-                        bookJasonObject.getString("itemc4"),
-                        bookJasonObject.getString("itemc5"),
-                        bookJasonObject.getString("itemc6"),
-                        bookJasonObject.getString("itemc7")
-                    )
+                            listfAlltags[i],
+                            bookJasonObject.getString("itemquestion"),
+                            bookJasonObject.getString("itemoptn1"),
+                            bookJasonObject.getString("itemoptn2"),
+                            bookJasonObject.getString("itemoptn3"),
+                            bookJasonObject.getString("itemoptn4"),
+                            bookJasonObject.getString("itemoptn5"),
+                            bookJasonObject.getString("itemoptn6"),
+                            bookJasonObject.getString("itemoptn7"),
+                            bookJasonObject.getString("itemc1"),
+                            bookJasonObject.getString("itemc2"),
+                            bookJasonObject.getString("itemc3"),
+                            bookJasonObject.getString("itemc4"),
+                            bookJasonObject.getString("itemc5"),
+                            bookJasonObject.getString("itemc6"),
+                            bookJasonObject.getString("itemc7")
+                        )
 //                    if(bookJasonObject.getString("itemRating")=="2"){
-                    bookList.add(bookObject)
+                        bookList.add(bookObject)
 //                    }
-                }
+                    }
                 }
 
                 readProgressLayout.visibility= View.GONE
@@ -118,15 +141,6 @@ class PollFragment : Fragment() {
 
 
 
-
-        addPoll.setOnClickListener { GotoAddPollactivity()}
-
-
-
-
-
-
-        return binding.root
     }
 
 

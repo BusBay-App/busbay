@@ -421,6 +421,10 @@ class AddPollActivity : AppCompatActivity() {
 
     }
 
+    fun getDefaults(key: String?): String? {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        return preferences.getString(key, null)
+    }
 
 
 }
