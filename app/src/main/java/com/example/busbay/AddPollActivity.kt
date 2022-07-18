@@ -276,6 +276,8 @@ class AddPollActivity : AppCompatActivity() {
 
                         }
 
+
+
 //                    if(true){
 
                         /////////////Current Date
@@ -293,6 +295,10 @@ class AddPollActivity : AppCompatActivity() {
                         var alltags=""
                         for(i in 0 until array_chips_selected.size){
                             alltags+=array_chips_selected[i]+" "
+                        }
+
+                        if(chipsBtech.isChecked){
+                            alltags=getString(R.string.all_tags_btech)
                         }
 
 

@@ -30,6 +30,7 @@
     </string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_activity_maps_view">MapsViewActivity</string>
+    <string name="all_tags_btech">\"CSE18 MnC18 EE18 ME18 CSE19 MnC19 EE19 ME19 CSE20 MnC20 EE20 ME20 CSE21 Mnc21 EE21 ME21 CSE22 MnC22 EE22 ME22 \"</string>
 
 
 </resources>
