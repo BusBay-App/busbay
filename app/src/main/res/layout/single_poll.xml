@@ -7,14 +7,55 @@
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
 
-    app:cardBackgroundColor="@color/card_2"
+    app:cardBackgroundColor="#D1B235"
     android:layout_margin="16dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginStart="16dp"
+
         android:layout_marginVertical="6dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/txtv_branch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Branch"
+                android:padding="4dp"
+                android:layout_gravity="left"
+                android:layout_marginRight="6dp"
+
+                android:background="@drawable/layout_branch_rv"
+                />
+            <TextView
+                android:id="@+id/txtv_Date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Date"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:layout_marginRight="4dp"
+
+                android:background="@drawable/layout_branch_rv"
+                />
+            <TextView
+                android:id="@+id/txtv_uploader_emailid"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="atharva.bhanage.20042@iitgoa.ac.in"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:background="@drawable/layout_branch_rv"
+                />
+        </LinearLayout>
+
 
             <TextView
                 android:id="@+id/txtv_relative_question"
@@ -34,6 +75,7 @@
                 android:layout_height="40dp"
                 android:src="@drawable/ic_horizontal_line"
                 />
+
         <Button
             android:id="@+id/opt1"
             android:layout_width="wrap_content"
@@ -51,8 +93,7 @@
             android:drawableLeft="@drawable/ic_button_unchecked"
 
 
-            android:text="Option1"
-            />
+            android:text="Option1" />
         <Button
             android:id="@+id/opt2"
             android:layout_width="wrap_content"
@@ -161,7 +202,90 @@
             android:text="Option7"
             />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp">
+        <TextView
+            android:id="@+id/txtv_c1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="c1"
+            android:padding="4dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="2dp"
 
+            android:background="@drawable/layout_branch_rv"
+            />
+        <TextView
+            android:id="@+id/txtv_c2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="c2"
+            android:padding="4dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="2dp"
+
+            android:background="@drawable/layout_branch_rv"
+            />
+        <TextView
+            android:id="@+id/txtv_c3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="c3"
+            android:padding="4dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="2dp"
+
+            android:background="@drawable/layout_branch_rv"
+            />
+        <TextView
+            android:id="@+id/txtv_c4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="c4"
+            android:padding="4dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="2dp"
+
+            android:background="@drawable/layout_branch_rv"
+            />
+        <TextView
+            android:id="@+id/txtv_c5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="c5"
+            android:padding="4dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="2dp"
+
+            android:background="@drawable/layout_branch_rv"
+            />
+        <TextView
+            android:id="@+id/txtv_c6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="c6"
+            android:padding="4dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="2dp"
+
+            android:background="@drawable/layout_branch_rv"
+            />
+        <TextView
+            android:id="@+id/txtv_c7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="c7"
+            android:padding="4dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="2dp"
+
+            android:background="@drawable/layout_branch_rv"
+            />
+
+    </LinearLayout>
     </LinearLayout>
 
 
