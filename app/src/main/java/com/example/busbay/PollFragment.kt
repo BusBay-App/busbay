@@ -3,6 +3,7 @@ package com.example.busbay
 import android.app.Application
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.*
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
@@ -178,6 +180,7 @@ class PollFragment : Fragment()  {
 ////                            }
 //                        }
 //                        upss()
+                        iniRefreshListener()
                     }
 
                 })
@@ -289,6 +292,21 @@ class PollFragment : Fragment()  {
     }
     fun searchDatabase(searchQuery: String) : LiveData<List<DateTimeEntity>>{
         return repository.search_date_time(searchQuery)
+    }
+
+    //refresh
+    fun iniRefreshListener() {
+        val swipeRefreshLayout=binding.swipeLayout
+        swipeRefreshLayout.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener { // This method gets called when user pull for refresh,
+            // You can make your API call here,
+            val handler = Handler()
+            handler.postDelayed(Runnable {
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false)
+                }
+            }, 3000)
+        })
+        onResume()
     }
 
 

@@ -10,6 +10,10 @@
         android:background="@color/card_2"
         tools:context=".DashboardFragment">
 
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -25,6 +29,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/readProgressLayout"
             tools:listitem="@layout/single_poll"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
         <RelativeLayout
             android:id="@+id/readProgressLayout"
