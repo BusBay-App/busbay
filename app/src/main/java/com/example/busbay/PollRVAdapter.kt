@@ -1,19 +1,30 @@
 package com.example.busbay
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
     : RecyclerView.Adapter<PollRVAdapter.ReadViewHolder>()  {
 
+    private lateinit var mListner: onItemClickListner
+    interface onItemClickListner{
+        fun onItemClick(position: String)
+    }
+
+    fun setOnItemClickListner(listner: onItemClickListner){
+        mListner=listner
+    }
+
+    class ReadViewHolder(view: View,itemClickListner: onItemClickListner):RecyclerView.ViewHolder(view){
 
 
-    class ReadViewHolder(view: View):RecyclerView.ViewHolder(view){
 
         val date :TextView=view.findViewById(R.id.txtv_Date)
         val itememail_id :TextView=view.findViewById(R.id.txtv_uploader_emailid)
@@ -33,11 +44,39 @@ class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
         val itemc5 :TextView=view.findViewById(R.id.txtv_c5)
         val itemc6 :TextView=view.findViewById(R.id.txtv_c6)
         val itemc7 :TextView=view.findViewById(R.id.txtv_c7)
+
+        init {
+//            view.setOnClickListener {
+//                itemClickListner.onItemClick(adapterPosition.toString())
+//
+//            }
+            itemoptn1.setOnClickListener {
+                itemClickListner.onItemClick(itemoptn1.text.toString())
+            }
+            itemoptn2.setOnClickListener {
+                itemClickListner.onItemClick(itemoptn2.text.toString())
+            }
+            itemoptn3.setOnClickListener {
+                itemClickListner.onItemClick(itemoptn3.text.toString())
+            }
+            itemoptn4.setOnClickListener {
+                itemClickListner.onItemClick(itemoptn4.text.toString())
+            }
+            itemoptn5.setOnClickListener {
+                itemClickListner.onItemClick(itemoptn5.text.toString())
+            }
+            itemoptn6.setOnClickListener {
+                itemClickListner.onItemClick(itemoptn6.text.toString())
+            }
+            itemoptn7.setOnClickListener {
+                itemClickListner.onItemClick(itemoptn7.text.toString())
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReadViewHolder {
         val view= LayoutInflater.from(parent.context).inflate(R.layout.single_poll,parent,false)
-        return ReadViewHolder(view)
+        return ReadViewHolder(view,mListner)
     }
 
     override fun onBindViewHolder(holder: ReadViewHolder, position: Int) {
@@ -78,11 +117,17 @@ class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
         if(book.itemoptn7==""){
             holder.itemoptn7.visibility = View.GONE
         }
+//        holder.itemoptn1.setOnClickListener {
+//           Log.i("Clicked",holder.itemoptn1.text.toString())
+//
+//        }
 
     }
 
     override fun getItemCount(): Int {
         return itemList.size
     }
+
+
 
 }

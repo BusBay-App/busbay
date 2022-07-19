@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,14 +32,11 @@ class PollFragment : Fragment() {
 
 
     lateinit var readProgressLayout: RelativeLayout
-    lateinit var readProgressBar : ProgressBar
+    lateinit var readProgressBar: ProgressBar
     lateinit var recyclerView: RecyclerView
     lateinit var layoutManager: LinearLayoutManager
-    lateinit var recyclerAdapter:PollRVAdapter
-    lateinit var proffession_year:String
-
-
-
+    lateinit var recyclerAdapter: PollRVAdapter
+    lateinit var proffession_year: String
 
 
     override fun onCreateView(
@@ -46,26 +44,27 @@ class PollFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding=FragmentPollBinding.inflate(inflater,container,false)
+        binding = FragmentPollBinding.inflate(inflater, container, false)
         //Firebase auth
-        auth= Firebase.auth//different UI
-        addPoll=binding.floatingActionButtonPoll
+        auth = Firebase.auth//different UI
+        addPoll = binding.floatingActionButtonPoll
 
 
 
-        recyclerView=binding.recyclerView
-        readProgressLayout=binding.readProgressLayout
-        readProgressBar=binding.readProgressBar
-        layoutManager= LinearLayoutManager(requireActivity())
+        recyclerView = binding.recyclerView
+        readProgressLayout = binding.readProgressLayout
+        readProgressBar = binding.readProgressBar
+        layoutManager = LinearLayoutManager(requireActivity())
 
-        proffession_year=getDefaults("Branch")+((getDefaults("PassOutYear")?.toInt())!! -2000-4).toString()
-
-
-
+        proffession_year =
+            getDefaults("Branch") + ((getDefaults("PassOutYear")?.toInt())!! - 2000 - 4).toString()
 
 
 
-        addPoll.setOnClickListener { GotoAddPollactivity()}
+
+
+
+        addPoll.setOnClickListener { GotoAddPollactivity() }
 
 
 
@@ -77,24 +76,25 @@ class PollFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val bookList= arrayListOf<BookofPoll>()
-        val queue= Volley.newRequestQueue(requireActivity())
-        val url="https://script.google.com/macros/s/AKfycbyWva0kwG5EbOYbLb1OV2G92Xn7sBTEodw6oPo5bqV5Z77dYm1QDIgMN4rqI8rY34zOZA/exec"
+        val bookList = arrayListOf<BookofPoll>()
+        val queue = Volley.newRequestQueue(requireActivity())
+        val url =
+            "https://script.google.com/macros/s/AKfycbyWva0kwG5EbOYbLb1OV2G92Xn7sBTEodw6oPo5bqV5Z77dYm1QDIgMN4rqI8rY34zOZA/exec"
 
-        val jsonObjectRequest=object : JsonObjectRequest(
-            Request.Method.GET,url,null,
+        val jsonObjectRequest = object : JsonObjectRequest(
+            Request.Method.GET, url, null,
             Response.Listener {
-                val data=it.getJSONArray("items")
-                for(i in 0 until data.length()) {
+                val data = it.getJSONArray("items")
+                for (i in 0 until data.length()) {
                     val bookJasonObject = data.getJSONObject(i)
                     val listfAlltags =
                         bookJasonObject.getString("itembranchyear").split(" ").toTypedArray()
 
                     for (i in 0 until listfAlltags.size) {
-                        if(listfAlltags[i]==""){
+                        if (listfAlltags[i] == "") {
                             break
                         }
-                        if(proffession_year!=listfAlltags[i]){
+                        if (proffession_year != listfAlltags[i]) {
                             continue
                         }
 
@@ -125,13 +125,32 @@ class PollFragment : Fragment() {
                     }
                 }
 
-                readProgressLayout.visibility= View.GONE
-                readProgressBar.visibility= View.GONE
-                recyclerAdapter= PollRVAdapter(requireActivity(),bookList)
-                recyclerView.adapter=recyclerAdapter
-                recyclerView.layoutManager=layoutManager
-            }, Response.ErrorListener {  }
-        ){
+                readProgressLayout.visibility = View.GONE
+                readProgressBar.visibility = View.GONE
+                recyclerAdapter = PollRVAdapter(requireActivity(), bookList)
+
+                //////
+                recyclerAdapter.setOnItemClickListner(object : PollRVAdapter.onItemClickListner {
+//                    override fun onItemClick(position: Int) {
+//
+//                        Toast.makeText(requireActivity(), "Clicked on $position", Toast.LENGTH_SHORT).show()
+//                    }
+
+                    override fun onItemClick(position: String) {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Clicked on $position",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    }
+
+                })
+                ///
+                recyclerView.adapter = recyclerAdapter
+                recyclerView.layoutManager = layoutManager
+            }, Response.ErrorListener { }
+        ) {
             override fun getHeaders(): MutableMap<String, String> {
                 return super.getHeaders()
             }
@@ -139,14 +158,11 @@ class PollFragment : Fragment() {
         queue.add(jsonObjectRequest)
 
 
-
-
     }
 
 
-
     private fun GotoAddPollactivity() {
-        val intent= Intent(getActivity(),AddPollActivity::class.java) ///
+        val intent = Intent(getActivity(), AddPollActivity::class.java) ///
         startActivity(intent)
     }
 
@@ -154,7 +170,6 @@ class PollFragment : Fragment() {
         val preferences = PreferenceManager.getDefaultSharedPreferences(requireActivity())
         return preferences.getString(key, null)
     }
-
 
 
 }
