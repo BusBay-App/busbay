@@ -1,14 +1,19 @@
 package com.example.busbay
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +26,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
-class PollFragment : Fragment() {
+class PollFragment : Fragment()  {
     private lateinit var binding: FragmentPollBinding
     private lateinit var auth: FirebaseAuth
     lateinit var addPoll: FloatingActionButton //
@@ -37,6 +45,16 @@ class PollFragment : Fragment() {
     lateinit var proffession_year: String
 
 
+
+    private lateinit var alldate_time :LiveData<List<DateTimeEntity>>
+    private lateinit var  repository: DateTimeRepository
+
+    init {
+
+
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,6 +64,12 @@ class PollFragment : Fragment() {
         //Firebase auth
         auth = Firebase.auth//different UI
         addPoll = binding.floatingActionButtonPoll
+
+
+        val dao= DateTimeDatabase.getDatabase(requireActivity()).getDateTimeDao()
+        repository=DateTimeRepository(dao)
+        alldate_time=repository.alldatetime
+
 
 
 
@@ -136,7 +160,23 @@ class PollFragment : Fragment() {
 
                     override fun onItemClick(datee: String,optionn:String) {
 //                        Toast.makeText(requireActivity(),"Clicked on $datee $optionn",Toast.LENGTH_SHORT).show()
-                        updateItemToSheet(datee,optionn)
+                        ///Inserting in ROOOM
+                        searchDatabase(datee).observe(requireActivity()) {
+                            if(it.size.toString()=="0"){
+                                updateItemToSheet(datee,optionn)
+                                insertNode(DateTimeEntity(datee))
+//                                Toast.makeText(requireActivity(), "this "+ it.size.toString(), Toast.LENGTH_SHORT).show()
+                            }
+                            else{
+                                Toast.makeText(requireActivity(), "Already Voted", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+//                        searchDatabase(datee).observe(requireActivity()) {
+////                            if(it.size==1){
+//                            Toast.makeText(requireActivity(), "this2 "+ it.size.toString(), Toast.LENGTH_SHORT).show()
+////                            }
+//                        }
 //                        upss()
                     }
 
@@ -243,6 +283,12 @@ class PollFragment : Fragment() {
     fun getDefaults(key: String?): String? {
         val preferences = PreferenceManager.getDefaultSharedPreferences(requireActivity())
         return preferences.getString(key, null)
+    }
+    fun insertNode(note : DateTimeEntity) = GlobalScope.launch(Dispatchers.IO){
+        repository.insert(note)
+    }
+    fun searchDatabase(searchQuery: String) : LiveData<List<DateTimeEntity>>{
+        return repository.search_date_time(searchQuery)
     }
 
 

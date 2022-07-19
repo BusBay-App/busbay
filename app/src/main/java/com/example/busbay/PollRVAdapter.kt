@@ -54,36 +54,36 @@ class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
 //            }
             itemoptn1.setOnClickListener {
                 itemClickListner.onItemClick(date.text.toString(),"1")
-                itemc1.text= (itemc1.text.toString().toInt()+1).toString()
+//                itemc1.text= (itemc1.text.toString().toInt()+1).toString()
             }
             itemoptn2.setOnClickListener {
                 itemClickListner.onItemClick(date.text.toString(),"2")
-                itemc2.text= (itemc2.text.toString().toInt()+1).toString()
+//                itemc2.text= (itemc2.text.toString().toInt()+1).toString()
 
             }
             itemoptn3.setOnClickListener {
                 itemClickListner.onItemClick(date.text.toString(),"3")
-                itemc3.text= (itemc3.text.toString().toInt()+1).toString()
+//                itemc3.text= (itemc3.text.toString().toInt()+1).toString()
 
             }
             itemoptn4.setOnClickListener {
                 itemClickListner.onItemClick(date.text.toString(),"4")
-                itemc4.text= (itemc4.text.toString().toInt()+1).toString()
+//                itemc4.text= (itemc4.text.toString().toInt()+1).toString()
 
             }
             itemoptn5.setOnClickListener {
                 itemClickListner.onItemClick(date.text.toString(),"5")
-                itemc5.text= (itemc5.text.toString().toInt()+1).toString()
+//                itemc5.text= (itemc5.text.toString().toInt()+1).toString()
 
             }
             itemoptn6.setOnClickListener {
                 itemClickListner.onItemClick(date.text.toString(),"6")
-                itemc6.text= (itemc6.text.toString().toInt()+1).toString()
+//                itemc6.text= (itemc6.text.toString().toInt()+1).toString()
 
             }
             itemoptn7.setOnClickListener {
                 itemClickListner.onItemClick(date.text.toString(),"7")
-                itemc7.text= (itemc7.text.toString().toInt()+1).toString()
+//                itemc7.text= (itemc7.text.toString().toInt()+1).toString()
 
             }
         }
