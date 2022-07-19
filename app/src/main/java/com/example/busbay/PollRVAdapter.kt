@@ -15,7 +15,7 @@ class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
 
     private lateinit var mListner: onItemClickListner
     interface onItemClickListner{
-        fun onItemClick(position: String)
+        fun onItemClick(date: String,option:String)
     }
 
     fun setOnItemClickListner(listner: onItemClickListner){
@@ -51,25 +51,25 @@ class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
 //
 //            }
             itemoptn1.setOnClickListener {
-                itemClickListner.onItemClick(itemoptn1.text.toString())
+                itemClickListner.onItemClick(date.text.toString(),"1")
             }
             itemoptn2.setOnClickListener {
-                itemClickListner.onItemClick(itemoptn2.text.toString())
+                itemClickListner.onItemClick(date.text.toString(),"2")
             }
             itemoptn3.setOnClickListener {
-                itemClickListner.onItemClick(itemoptn3.text.toString())
+                itemClickListner.onItemClick(date.text.toString(),"3")
             }
             itemoptn4.setOnClickListener {
-                itemClickListner.onItemClick(itemoptn4.text.toString())
+                itemClickListner.onItemClick(date.text.toString(),"4")
             }
             itemoptn5.setOnClickListener {
-                itemClickListner.onItemClick(itemoptn5.text.toString())
+                itemClickListner.onItemClick(date.text.toString(),"5")
             }
             itemoptn6.setOnClickListener {
-                itemClickListner.onItemClick(itemoptn6.text.toString())
+                itemClickListner.onItemClick(date.text.toString(),"6")
             }
             itemoptn7.setOnClickListener {
-                itemClickListner.onItemClick(itemoptn7.text.toString())
+                itemClickListner.onItemClick(date.text.toString(),"7")
             }
         }
     }
@@ -83,7 +83,7 @@ class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
         val book=itemList[position]
 //        if(book.bookRating.toString()=="2"){
         holder.date.text=book.date
-        holder.date.text=book.date
+//        holder.date.text=book.date
         holder.itememail_id.text=book.itememail_id
         holder.itembranchyear.text=book.itembranchyear
         holder.itemquestion.text=book.itemquestion
@@ -103,19 +103,28 @@ class PollRVAdapter(val context: Context, val itemList:ArrayList<BookofPoll>)
         holder.itemc7.text=book.itemc7
         if(book.itemoptn3==""){
             holder.itemoptn3.visibility = View.GONE
+            holder.itemc3.visibility=View.GONE
         }
 
         if(book.itemoptn4==""){
             holder.itemoptn4.visibility = View.GONE
+            holder.itemc4.visibility=View.GONE
+
         }
         if(book.itemoptn5==""){
             holder.itemoptn5.visibility = View.GONE
+            holder.itemc5.visibility=View.GONE
+
         }
         if(book.itemoptn6==""){
             holder.itemoptn6.visibility = View.GONE
+            holder.itemc6.visibility=View.GONE
+
         }
         if(book.itemoptn7==""){
             holder.itemoptn7.visibility = View.GONE
+            holder.itemc7.visibility=View.GONE
+
         }
 //        holder.itemoptn1.setOnClickListener {
 //           Log.i("Clicked",holder.itemoptn1.text.toString())

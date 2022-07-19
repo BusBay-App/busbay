@@ -2,22 +2,20 @@ package com.example.busbay
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.Response
+import com.android.volley.*
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.busbay.databinding.FragmentMapBinding
 import com.example.busbay.databinding.FragmentPollBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
@@ -99,7 +97,7 @@ class PollFragment : Fragment() {
                         }
 
                         val bookObject = BookofPoll(
-                            bookJasonObject.getString("date").split(" ")[0],
+                            bookJasonObject.getString("date"),
                             bookJasonObject.getString("itememail_id"),
 //                        bookJasonObject.getString("itembranchyear"),
                             listfAlltags[i],
@@ -136,13 +134,10 @@ class PollFragment : Fragment() {
 //                        Toast.makeText(requireActivity(), "Clicked on $position", Toast.LENGTH_SHORT).show()
 //                    }
 
-                    override fun onItemClick(position: String) {
-                        Toast.makeText(
-                            requireActivity(),
-                            "Clicked on $position",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
+                    override fun onItemClick(datee: String,optionn:String) {
+//                        Toast.makeText(requireActivity(),"Clicked on $datee $optionn",Toast.LENGTH_SHORT).show()
+                        updateItemToSheet(datee,optionn)
+//                        upss()
                     }
 
                 })
@@ -159,7 +154,86 @@ class PollFragment : Fragment() {
 
 
     }
+/////////////////////////////////////
+    private fun updateItemToSheet(datee: String, optionn: String) {
 
+        readProgressLayout.visibility = View.VISIBLE
+        readProgressBar.visibility = View.VISIBLE
+        val url="https://script.google.com/macros/s/AKfycbxd4dMKEl-eBGsnGKTYazF7RMhDYN9_Na-8bmxbMqFmntH9NQfNsUu_pvMhqjfR1lAklQ/exec"
+//        val loading = ProgressDialog.show(requireActivity(), "Updating Item", "Please wait")
+//        val name: String = editTextItemName.getText().toString().trim { it <= ' ' }
+//        val brand: String = editTextBrand.getText().toString().trim { it <= ' ' }
+//        val price: String = editTextPrice.getText().toString().trim { it <= ' ' }
+
+
+        val stringRequest: StringRequest = object : StringRequest(
+            Method.POST, url,
+            Response.Listener { response ->
+//                loading.dismiss()
+                readProgressLayout.visibility = View.GONE
+                readProgressBar.visibility = View.GONE
+                Toast.makeText(requireActivity(), response, Toast.LENGTH_LONG).show()
+//                when(optionn){
+//                    "1"-> {}
+//                    "2"-> {}
+//                    "3"-> {}
+//                    "4"-> {}
+//                    "5"-> {}
+//                    "6"-> {}
+//                    "7"-> {}
+//
+//                }
+//                val intent = Intent(requireActivity(), MainActivity::class.java)
+//                startActivity(intent)
+            },
+            Response.ErrorListener {
+                Toast.makeText(requireActivity(), "Error "+it.toString(), Toast.LENGTH_SHORT).show()
+            }
+        ) {
+            override fun getParams(): Map<String, String>? {
+                val parmas: MutableMap<String, String> = HashMap()
+
+
+                //parmas
+                parmas["Date"]=datee
+//                parmas["Email_Id"]="email"
+//                parmas["Branch_Year"]="CSE18 MnC18 EE18 ME18 CSE19 MnC19 EE19 ME19 CSE20 MnC20 EE20 ME20 CSE21 Mnc21 EE21 ME21 CSE22 MnC22 EE22 ME22 "
+//                parmas["Question"]="question"
+//                parmas["Option1"]="optn1"
+//                parmas["Option2"]="optn2"
+//                parmas["Option3"]="optn3"
+//                parmas["Option4"]="optn4"
+//                parmas["Option5"]="optn5"
+//                parmas["Option6"]="optn6"
+//                parmas["Option7"]="optn7"
+
+//                parmas["c1"]="1"
+//                parmas["c2"]="1"
+//                parmas["c3"]="1"
+//                parmas["c4"]="1"
+//                parmas["c5"]="1"
+//                parmas["c6"]="1"
+//                parmas["c7"]="1"
+                parmas["option_no_selected"]=optionn
+
+                return parmas
+            }
+        }
+
+//        val socketTimeOut = 50000 // u can change this .. here it is 50 seconds
+
+
+//        val retryPolicy: RetryPolicy =
+//            DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+//        stringRequest.retryPolicy = retryPolicy
+
+        val queue = Volley.newRequestQueue(requireActivity())
+
+        queue.add(stringRequest)
+
+
+    }
+///////////////////////////////////
 
     private fun GotoAddPollactivity() {
         val intent = Intent(getActivity(), AddPollActivity::class.java) ///
