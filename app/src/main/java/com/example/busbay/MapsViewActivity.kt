@@ -1,6 +1,7 @@
 package com.example.busbay
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.busbay.databinding.ActivityMapsViewBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -69,39 +70,46 @@ class MapsViewActivity : AppCompatActivity(), OnMapReadyCallback {
         val myRef = database.getReference("message")
         var getdata= object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                var sb=StringBuilder()
-                val printobjt = snapshot.child("bcBGd3y4kgS2isAAB8FfiGHzV242").getValue().toString()
-                var ltt=""
-                var lgg=""
-                var flag=0
-                for (i in 0..printobjt.length-1) {
-                    if(printobjt[i]=='-'){
-                        flag=1
-                    }
-                    else if(flag==1){
-                        lgg+=printobjt[i]
-                    }
-                    else{
 
-                        ltt+=printobjt[i]
+                val children=snapshot!!.children
+                children.forEach{
+
+//                    Toast.makeText(this@MapsViewActivity, it.key.toString(), Toast.LENGTH_SHORT).show()
+                    var sb=StringBuilder()
+                    val printobjt = snapshot.child(it.key.toString()).getValue().toString()
+                    var ltt=""
+                    var lgg=""
+                    var flag=0
+                    for (i in 0..printobjt.length-1) {
+                        if(printobjt[i]=='-'){
+                            flag=1
+                        }
+                        else if(flag==1){
+                            lgg+=printobjt[i]
+                        }
+                        else{
+
+                            ltt+=printobjt[i]
+                        }
+                        println(printobjt[i])
                     }
-                    println(printobjt[i])
-                }
 //                Toast.makeText(this@MapsActivity,"ltt"+ltt+" lgg"+lgg ,Toast.LENGTH_SHORT).show()
-                mMap.clear()
-                val sydney = LatLng(ltt.toDouble(),lgg.toDouble())
+                    mMap.clear()
+                    val sydney = LatLng(ltt.toDouble(),lgg.toDouble())
 
 
-                mMap.addMarker(MarkerOptions().position(sydney).title("Bus Location"));
+                    mMap.addMarker(MarkerOptions().position(sydney).title("Bus Location"));
 //                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
 
 
 
 
-                if(firstTimeLocation==1){
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
-                    firstTimeLocation=0
+                    if(firstTimeLocation==1){
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
+                        firstTimeLocation=0
+                    }
+
                 }
 
 

@@ -49,6 +49,7 @@ class LocationService : Service() {
 //                printlocation(location.latitude.toString(),location.longitude.toString())
 
                 val currentUser= auth.currentUser?.uid.toString()
+
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("message")
 //                myRef.child(currentUser).setValue("la"+ location.latitude.toString() +" lo"+ location.longitude.toString()).addOnSuccessListener {
