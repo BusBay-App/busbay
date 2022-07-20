@@ -210,7 +210,7 @@ class InfoDetails : AppCompatActivity() {
                 };
                 "Bus Driver"->{
                     if((phno!="") and (dob!="") and (passwordDriver!="")   ){
-                        if(binding.driverPassword.text.toString()=="123456") {
+                        if(binding.driverPassword.text.toString()==BuildConfig.Bus_Pass) {
                             saveProfessionDatalocally("Bus Driver")
                             saveRollNoDatalocally(numberroll)
                             savePhoneNumberDatalocally(phno)

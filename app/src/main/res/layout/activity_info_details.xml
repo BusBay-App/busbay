@@ -200,7 +200,7 @@
                 android:id="@+id/driver_password"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+
                 android:background="@drawable/textinput_border"
                 android:hint="Driver Secret Password"
                 android:textColorHint="@color/black"
