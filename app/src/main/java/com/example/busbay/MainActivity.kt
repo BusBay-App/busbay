@@ -4,7 +4,9 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 import com.example.busbay.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -56,8 +58,14 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_poll ->{
-                    setCurrentFragment(pollFragment)
-                    true
+                    if(getDefaults("Profession")=="Student")
+                    {
+                        setCurrentFragment(pollFragment)
+                        true                        
+                    }
+                    Toast.makeText(this, "Only Students are allowed to view Poll", Toast.LENGTH_SHORT).show()
+                    false
+                    
                 }
                 else-> {
                     false
@@ -95,5 +103,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+    fun getDefaults(key: String?): String? {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        return preferences.getString(key, null)
     }
 }
