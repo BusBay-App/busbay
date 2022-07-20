@@ -143,8 +143,8 @@ class AddComplain : AppCompatActivity() {
     ) {
 
     /////Google Sheet//   https://script.google.com/home/projects/1_qzde8-SkrrjrNbY9eZqu0uNNNFiJ0tjN8jN3HJ6DLUZo2m0MfRE3fEq/edit
-    val url="https://script.google.com/macros/s/AKfycbx3nOyqnuz3jbpeofjIiUAylHieGSsZ0Oynxqavo-Fx95stNntbSieoAc0dGc7k4gc/exec"
-    val stringRequest=object:StringRequest(Request.Method.POST,url,
+    val url=BuildConfig.Complain_API_POST
+        val stringRequest=object:StringRequest(Request.Method.POST,url,
         Response.Listener {
             Toast.makeText(this, "Succes added", Toast.LENGTH_SHORT).show()
         },

@@ -63,8 +63,11 @@ class MainActivity : AppCompatActivity() {
                         setCurrentFragment(pollFragment)
                         true                        
                     }
-                    Toast.makeText(this, "Only Students are allowed to view Poll", Toast.LENGTH_SHORT).show()
-                    false
+                    else {
+                        Toast.makeText(this, "Only Students are allowed to view Poll", Toast.LENGTH_SHORT).show()
+                        false
+                    }
+
                     
                 }
                 else-> {

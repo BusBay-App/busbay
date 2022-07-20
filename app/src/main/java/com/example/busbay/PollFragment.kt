@@ -103,8 +103,7 @@ class PollFragment : Fragment()  {
         val bookList = arrayListOf<BookofPoll>()
         val queue = Volley.newRequestQueue(requireActivity())
         val url =
-            "https://script.google.com/macros/s/AKfycbyWva0kwG5EbOYbLb1OV2G92Xn7sBTEodw6oPo5bqV5Z77dYm1QDIgMN4rqI8rY34zOZA/exec"
-
+            BuildConfig.Poll_API_GET
         val jsonObjectRequest = object : JsonObjectRequest(
             Request.Method.GET, url, null,
             Response.Listener {
@@ -170,7 +169,7 @@ class PollFragment : Fragment()  {
 //                                Toast.makeText(requireActivity(), "this "+ it.size.toString(), Toast.LENGTH_SHORT).show()
                             }
                             else{
-                                Toast.makeText(requireActivity(), "Already Voted", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireActivity(), "Voted", Toast.LENGTH_SHORT).show()
                             }
                         }
 
@@ -202,8 +201,8 @@ class PollFragment : Fragment()  {
 
         readProgressLayout.visibility = View.VISIBLE
         readProgressBar.visibility = View.VISIBLE
-        val url="https://script.google.com/macros/s/AKfycbxd4dMKEl-eBGsnGKTYazF7RMhDYN9_Na-8bmxbMqFmntH9NQfNsUu_pvMhqjfR1lAklQ/exec"
-//        val loading = ProgressDialog.show(requireActivity(), "Updating Item", "Please wait")
+        val url=BuildConfig.Poll_API_UPDATE
+    //        val loading = ProgressDialog.show(requireActivity(), "Updating Item", "Please wait")
 //        val name: String = editTextItemName.getText().toString().trim { it <= ' ' }
 //        val brand: String = editTextBrand.getText().toString().trim { it <= ' ' }
 //        val price: String = editTextPrice.getText().toString().trim { it <= ' ' }
@@ -215,7 +214,7 @@ class PollFragment : Fragment()  {
 //                loading.dismiss()
                 readProgressLayout.visibility = View.GONE
                 readProgressBar.visibility = View.GONE
-                Toast.makeText(requireActivity(), response, Toast.LENGTH_LONG).show()
+//                Toast.makeText(requireActivity(), response, Toast.LENGTH_LONG).show()
 //                when(optionn){
 //                    "1"-> {}
 //                    "2"-> {}

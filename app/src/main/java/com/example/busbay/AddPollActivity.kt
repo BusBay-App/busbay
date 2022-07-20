@@ -303,8 +303,7 @@ class AddPollActivity : AppCompatActivity() {
 
 
                         /////////////////https://script.google.com/u/1/home/projects/1L2HatJhLx3paPS8GJYTDgJTUbfSb-szXa2BycETsShxXERaHq10QHXHt/edit
-                        val url="https://script.google.com/macros/s/AKfycbxn8rEqSnF9MdQjE-KpD1dUMCPYQITi5DV_iBcWhT5_GDjKNuEGJLYamP9JhPEYEL4o4Q/exec"
-
+                        val url=BuildConfig.Poll_API_POST
 //                        for(i in 0..array_chips_selected.size-1){
 //                            Log.i("post",array_chips_selected[i])
 //                            var target_branch_year=array_chips_selected[i]
