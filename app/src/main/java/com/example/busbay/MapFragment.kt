@@ -184,6 +184,19 @@ class MapFragment : Fragment() {
 
 
             stopServiceFunc(user_profession)
+            val currentUser= auth.currentUser?.uid.toString()
+
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.getReference("message")
+//                myRef.child(currentUser).setValue("la"+ location.latitude.toString() +" lo"+ location.longitude.toString()).addOnSuccessListener {
+
+            myRef.child(currentUser).setValue( "Dont share").addOnSuccessListener {
+                Log.i("Baground","latitude and long updated")
+
+            }.addOnFailureListener{
+                Log.i("Baground","latitude and long update failed")
+
+            }
         }
         /////////
         busTimmingBtn.setOnClickListener {
