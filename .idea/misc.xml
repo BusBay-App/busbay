@@ -3,22 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/drawable/layout_profile_pic.xml" value="0.1685" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/drawable/layout_singin_curve.xml" value="0.1685" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/drawable/navigation_drawer.xml" value="0.1685" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/drawable/round_corner_button.xml" value="0.1685" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/drawable/rounded_header_back.xml" value="0.1685" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/drawable/textinput_border.xml" value="0.1685" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/layout/activity_add_complain.xml" value="0.24010416666666667" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/layout/activity_add_poll.xml" value="0.24010416666666667" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/layout/activity_complain.xml" value="0.24010416666666667" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/layout/activity_info_details.xml" value="0.24010416666666667" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/layout/dropdown_item.xml" value="0.24010416666666667" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/layout/nav_header.xml" value="0.152" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/layout/test_run.xml" value="0.264" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/menu/item_menu.xml" value="0.22037037037037038" />
-        <entry key="..\:/BusBay/frontend_busbay/app/src/main/res/menu/nav_drawer_menu.xml" value="0.11944444444444445" />
         <entry key="..\:/Users/Dell/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/list_content.xml" value="0.1" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/calandericonvector.xml" value="0.115" />
         <entry key="..\:/Users/Dell/Downloads/KotlinUdemy-master/BusBay/app/src/main/res/drawable/google_icon_for_button.xml" value="0.186" />

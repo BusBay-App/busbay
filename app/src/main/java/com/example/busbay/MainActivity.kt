@@ -5,7 +5,6 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.example.busbay.databinding.ActivityMainBinding
@@ -17,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var  binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
-    lateinit var toggle: ActionBarDrawerToggle
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,17 +75,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        //________________________________________________________ edit for side bar_________
 
-        val drawerLayout = binding.drawerLayout
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        //______________________________________________________________________________
     }
-
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
 //            add(R.id.flFragment, fragment)
