@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.bumptech.glide.Glide
 import com.example.busbay.databinding.FragmentHomeBinding
 import com.example.busbay.databinding.FragmentMapBinding
@@ -26,7 +27,9 @@ class HomeFragment : Fragment() {
     lateinit var imgProfilePic: ShapeableImageView //
 
     lateinit var btnComplain: Button //
-
+//_________________________________________________________
+    lateinit var toggle: ActionBarDrawerToggle
+// ___________________________________________________
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

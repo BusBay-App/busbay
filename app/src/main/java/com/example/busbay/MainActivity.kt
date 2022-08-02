@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.example.busbay.databinding.ActivityMainBinding
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var  binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
-
+    lateinit var toggle:ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

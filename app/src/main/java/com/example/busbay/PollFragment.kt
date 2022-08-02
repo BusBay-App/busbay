@@ -150,7 +150,10 @@ class PollFragment : Fragment()  {
 
                 readProgressLayout.visibility = View.GONE
                 readProgressBar.visibility = View.GONE
-                recyclerAdapter = PollRVAdapter(requireActivity(), bookList)
+                if (isAdded() && requireActivity() != null) {
+                    recyclerAdapter = PollRVAdapter(requireActivity(), bookList)
+
+
 
                 //////
                 recyclerAdapter.setOnItemClickListner(object : PollRVAdapter.onItemClickListner {
@@ -159,17 +162,17 @@ class PollFragment : Fragment()  {
 //                        Toast.makeText(requireActivity(), "Clicked on $position", Toast.LENGTH_SHORT).show()
 //                    }
 
-                    override fun onItemClick(datee: String,optionn:String) {
+                    override fun onItemClick(datee: String, optionn: String) {
 //                        Toast.makeText(requireActivity(),"Clicked on $datee $optionn",Toast.LENGTH_SHORT).show()
                         ///Inserting in ROOOM
                         searchDatabase(datee).observe(requireActivity()) {
-                            if(it.size.toString()=="0"){
-                                updateItemToSheet(datee,optionn)
+                            if (it.size.toString() == "0") {
+                                updateItemToSheet(datee, optionn)
                                 insertNode(DateTimeEntity(datee))
 //                                Toast.makeText(requireActivity(), "this "+ it.size.toString(), Toast.LENGTH_SHORT).show()
-                            }
-                            else{
-                                Toast.makeText(requireActivity(), "Voted", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(requireActivity(), "Voted", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         }
 
@@ -182,7 +185,7 @@ class PollFragment : Fragment()  {
                         iniRefreshListener()
                     }
 
-                })
+                })}
                 ///
                 recyclerView.adapter = recyclerAdapter
                 recyclerView.layoutManager = layoutManager
