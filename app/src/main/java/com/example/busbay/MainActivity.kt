@@ -39,8 +39,7 @@ class MainActivity : AppCompatActivity() {
         //Action Bar setup
         setupActionBar()
 
-
-
+//        throw RuntimeException("Test Crash") // Force a crash
 
         val navigationView = binding.bottomNavigation //bottom_navigation
         val btntopNav=binding.btnNavDrawer
