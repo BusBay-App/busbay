@@ -223,7 +223,7 @@ class MapFragment : Fragment() {
 
 
     private fun kichaui() {
-        if(auth.currentUser?.email ==getString(R.string.kicha_email)){
+        if(auth.currentUser?.email ==BuildConfig.kicha_email){
             binding.gifMapManrunning.setVisibility(View.INVISIBLE);
 
         }

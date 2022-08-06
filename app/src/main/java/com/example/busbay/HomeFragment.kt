@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
 import com.example.busbay.databinding.FragmentHomeBinding
 import com.example.busbay.databinding.FragmentMapBinding
@@ -22,6 +23,10 @@ import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
+//    private lateinit var mDrawerToggle: ActionBarDrawerToggle
+
+
+//    _____________________________
     private lateinit var binding: FragmentHomeBinding
     private lateinit var auth: FirebaseAuth
     lateinit var imgProfilePic: ShapeableImageView //
@@ -46,12 +51,20 @@ class HomeFragment : Fragment() {
         //different UI
 
         //setting profile pic
+
+//        mDrawerToggle = ActionBarDrawerToggle(requireActivity(),binding.drawerLayout,binding.toolbar, R.string.open, R.string.close)
+//        mDrawerToggle!!.syncState()
+//        binding.drawerLayout!!.closeDrawer(GravityCompat.START)
         setProfilepic()
 
         btnComplain.setOnClickListener {
             val intent= Intent(getActivity(),ComplainActivity::class.java)///
             startActivity(intent)
         }
+//        binding.btnNavDrawer.setOnClickListener {
+//            Toast.makeText(requireActivity(), "touched", Toast.LENGTH_SHORT).show()
+//
+//        }
 
 
 

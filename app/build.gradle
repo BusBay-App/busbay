@@ -4,6 +4,7 @@ plugins {
 //    id 'com.google.gms.google-services'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id "androidx.navigation.safeargs.kotlin"
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'com.google.gms.google-services'
 }
@@ -128,5 +129,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
 
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.0'
 
 }

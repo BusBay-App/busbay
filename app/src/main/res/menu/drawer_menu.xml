@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+
+
+
+
+
+
+        <item
+            android:id="@+id/fragmentAbout"
+            android:icon="@drawable/ic_menu"
+            android:title="About" />
+        <item
+            android:id="@+id/fragmentContact"
+            android:icon="@drawable/ic_menu"
+            android:title="Contacts" />
+
+</menu>

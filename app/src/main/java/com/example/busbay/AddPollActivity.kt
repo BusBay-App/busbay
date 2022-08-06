@@ -182,6 +182,7 @@ class AddPollActivity : AppCompatActivity() {
 
 
 
+
         ////botom sheet intitalsiation
         var button_save:Button?= view.findViewById(R.id.btnSavePoll)!!
         var button_addPollOption:Button?= view.findViewById(R.id.btnaddAnotherOption)!!

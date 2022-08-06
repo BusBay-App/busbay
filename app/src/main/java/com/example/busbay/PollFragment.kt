@@ -80,9 +80,13 @@ class PollFragment : Fragment()  {
         readProgressBar = binding.readProgressBar
         layoutManager = LinearLayoutManager(requireActivity())
 
-        proffession_year =
-            getDefaults("Branch") + ((getDefaults("PassOutYear")?.toInt())!! - 2000 - 4).toString()
-
+        if(getDefaults("Profession")=="Student" ){
+            proffession_year =
+                getDefaults("Branch") + ((getDefaults("PassOutYear")?.toInt())!! - 2000 - 4).toString()
+        }
+        else{
+            proffession_year=getDefaults("Branch")+" Proff "
+        }
 
 
 
@@ -102,10 +106,9 @@ class PollFragment : Fragment()  {
         super.onResume()
         val bookList = arrayListOf<BookofPoll>()
         val queue = Volley.newRequestQueue(requireActivity())
-        val url =
-            BuildConfig.Poll_API_GET
+//        val url =BuildConfig.Poll_API_GET
         val jsonObjectRequest = object : JsonObjectRequest(
-            Request.Method.GET, url, null,
+            Request.Method.GET,  BuildConfig.Poll_API_GET, null,
             Response.Listener {
                 val data = it.getJSONArray("items")
                 for (i in 0 until data.length()) {
@@ -117,8 +120,11 @@ class PollFragment : Fragment()  {
                         if (listfAlltags[i] == "") {
                             break
                         }
-                        if (proffession_year != listfAlltags[i]) {
+                        if (proffession_year != listfAlltags[i]  && bookJasonObject.getString("itememail_id")!= auth.currentUser?.email.toString()  ) {
                             continue
+                        }
+                        if(bookJasonObject.getString("itememail_id")== auth.currentUser?.email.toString()){
+                            break
                         }
 
                         val bookObject = BookofPoll(
@@ -145,6 +151,32 @@ class PollFragment : Fragment()  {
 //                    if(bookJasonObject.getString("itemRating")=="2"){
                         bookList.add(bookObject)
 //                    }
+                    }
+                    //if setter question
+                    if(bookJasonObject.getString("itememail_id")== auth.currentUser?.email.toString()){
+                        val bookObject = BookofPoll(
+                            bookJasonObject.getString("date"),
+                            bookJasonObject.getString("itememail_id"),
+//                        bookJasonObject.getString("itembranchyear"),
+                            bookJasonObject.getString("itembranchyear"),
+                            bookJasonObject.getString("itemquestion"),
+                            bookJasonObject.getString("itemoptn1"),
+                            bookJasonObject.getString("itemoptn2"),
+                            bookJasonObject.getString("itemoptn3"),
+                            bookJasonObject.getString("itemoptn4"),
+                            bookJasonObject.getString("itemoptn5"),
+                            bookJasonObject.getString("itemoptn6"),
+                            bookJasonObject.getString("itemoptn7"),
+                            bookJasonObject.getString("itemc1"),
+                            bookJasonObject.getString("itemc2"),
+                            bookJasonObject.getString("itemc3"),
+                            bookJasonObject.getString("itemc4"),
+                            bookJasonObject.getString("itemc5"),
+                            bookJasonObject.getString("itemc6"),
+                            bookJasonObject.getString("itemc7")
+                        )
+//                    if(bookJasonObject.getString("itemRating")=="2"){
+                        bookList.add(bookObject)
                     }
                 }
 
@@ -185,10 +217,12 @@ class PollFragment : Fragment()  {
                         iniRefreshListener()
                     }
 
-                })}
+                })
+                    recyclerView.adapter = recyclerAdapter
+                    recyclerView.layoutManager = layoutManager
+                }
                 ///
-                recyclerView.adapter = recyclerAdapter
-                recyclerView.layoutManager = layoutManager
+
             }, Response.ErrorListener { }
         ) {
             override fun getHeaders(): MutableMap<String, String> {
@@ -204,7 +238,8 @@ class PollFragment : Fragment()  {
 
         readProgressLayout.visibility = View.VISIBLE
         readProgressBar.visibility = View.VISIBLE
-        val url=BuildConfig.Poll_API_UPDATE
+//        val url=BuildConfig.Poll_API_UPDATE
+
     //        val loading = ProgressDialog.show(requireActivity(), "Updating Item", "Please wait")
 //        val name: String = editTextItemName.getText().toString().trim { it <= ' ' }
 //        val brand: String = editTextBrand.getText().toString().trim { it <= ' ' }
@@ -212,7 +247,7 @@ class PollFragment : Fragment()  {
 
 
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, url,
+            Method.POST, BuildConfig.Poll_API_UPDATE,
             Response.Listener { response ->
 //                loading.dismiss()
                 readProgressLayout.visibility = View.GONE

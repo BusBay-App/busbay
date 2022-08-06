@@ -232,25 +232,62 @@
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="3dp"
                 />
-            <EditText
-                android:id="@+id/branch_edittext"
+<!--            <EditText-->
+<!--                android:id="@+id/branch_edittext"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+
+<!--                android:background="@drawable/textinput_border"-->
+<!--                android:hint="Branch"-->
+<!--                android:textColorHint="@color/black"-->
+<!--                android:textColor="@color/black"-->
+
+
+<!--                android:padding="10dp"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/guidelinedetails10"-->
+<!--                app:layout_constraintLeft_toRightOf="@id/guidelinedetails7"-->
+<!--                app:layout_constraintRight_toLeftOf="@id/guidelinedetails11"-->
+<!--                android:textSize="14sp"-->
+<!--                android:layout_marginLeft="3dp"-->
+<!--                android:layout_marginRight="6dp"-->
+<!--                />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:id="@+id/textfeildbranchdrop"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
-                android:background="@drawable/textinput_border"
-                android:hint="Branch"
                 android:textColorHint="@color/black"
+                android:background="@color/white"
                 android:textColor="@color/black"
 
 
-                android:padding="10dp"
+
+
                 app:layout_constraintTop_toBottomOf="@id/guidelinedetails10"
                 app:layout_constraintLeft_toRightOf="@id/guidelinedetails7"
                 app:layout_constraintRight_toLeftOf="@id/guidelinedetails11"
                 android:textSize="14sp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="6dp"
-                />
+
+                 tools:ignore="NotSibling"
+
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/branchEdittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+
+
+                    android:hint="Branch"
+
+                    android:inputType="none"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <EditText
                 android:id="@+id/room_details_edittext"
                 android:layout_width="0dp"

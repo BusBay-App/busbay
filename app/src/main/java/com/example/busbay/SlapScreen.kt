@@ -100,8 +100,8 @@ class SlapScreen : AppCompatActivity() {
         val words = fullName.split("\\s".toRegex()).toTypedArray()
 
         ////////////////////KICHA
-        if(auth.currentUser?.email ==getString(R.string.kicha_email)){
-            setTitle("Hey, Beautiful💛" )
+        if(auth.currentUser?.email == BuildConfig.kicha_email){
+            setTitle(BuildConfig.heybeutiful)
             supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#D2C3DB")))
         }
         else{
