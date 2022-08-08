@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "699132902791-gbheilfotrps3jm5hp59prda8n8qno8i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.busbay",
+            "certificate_hash": "b5272f8dace0219275f9765bbacd18a9d4566f6f"
+          }
+        },
+        {
           "client_id": "699132902791-ej3a5klfhq07g5t6g4mo2cac5dcn7uh9.apps.googleusercontent.com",
           "client_type": 3
         }

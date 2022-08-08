@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/fragmentHome">
+
+<!--    <activity-->
+<!--        android:id="@+id/MainActivity"-->
+<!--        android:name="com.example.busbay.MainActivity"-->
+<!--        android:label="mainActivity"-->
+<!--        tools:layout="@layout/activity_main">-->
+<!--    </activity>-->
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.busbay.HomeFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentContact"
+            app:destination="@id/fragmentContact"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentAbout"
+            app:destination="@id/fragmentAbout"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentAbout"
+        android:name="com.example.busbay.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about"/>
+    <fragment
+        android:id="@+id/fragmentContact"
+        android:name="com.example.busbay.ContactsFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_contacts"/>
+
+</navigation>

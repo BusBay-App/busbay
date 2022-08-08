@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactsFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFA726"
+            >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_cont"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+
+
+            app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/Contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Contacts"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/atharva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="64dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/background_drawer"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/ath2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ath4">
+
+                        <!--app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
+
+
+                        <TextView
+                            android:id="@+id/user_name"
+                            android:layout_width="224dp"
+                            android:layout_height="27dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Ambulance driver: Damodar"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/ima4"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/c3"
+                            android:layout_width="219dp"
+                            android:layout_height="16dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_details_curve"
+                            android:text="+917378599398"
+
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/ima4"
+                            app:layout_constraintTop_toBottomOf="@+id/user_name"
+                            app:layout_constraintVertical_bias="0.277" />
+
+                        <ImageView
+                            android:id="@+id/ima4"
+                            android:layout_width="57dp"
+                            android:layout_height="58dp"
+                            android:src="@drawable/amb_img"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/user_name"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ath2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/background_drawer"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/cab_dri"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/atharva">
+
+                        <!--app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
+
+
+                        <TextView
+                            android:id="@+id/us"
+                            android:layout_width="224dp"
+                            android:layout_height="27dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Ambulance driver: Amar"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/imageView3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/c4"
+                            android:layout_width="219dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_details_curve"
+                            android:text="+919356498590"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageView3"
+                            app:layout_constraintTop_toBottomOf="@+id/us"
+                            app:layout_constraintVertical_bias="0.277" />
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="57dp"
+                            android:layout_height="58dp"
+                            android:layout_marginStart="16dp"
+                            android:src="@drawable/amb_img"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.514" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ath4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/background_drawer"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/atharva"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ath3">
+
+                        <!--app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
+
+
+                        <ImageView
+                            android:id="@+id/ima"
+                            android:layout_width="57dp"
+                            android:layout_height="58dp"
+                            android:src="@drawable/bus_img"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/use"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/use"
+                            android:layout_width="224dp"
+                            android:layout_height="27dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Bus driver: Yashwant"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/ima"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/c2"
+                            android:layout_width="219dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_details_curve"
+                            android:text="+917083355196"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/ima"
+                            app:layout_constraintTop_toBottomOf="@+id/use"
+                            app:layout_constraintVertical_bias="0.277" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ath3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/background_drawer"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/ath4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Contacts">
+
+                        <!--app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
+
+
+                        <ImageView
+                            android:id="@+id/ima2"
+                            android:layout_width="57dp"
+                            android:layout_height="58dp"
+                            android:src="@drawable/bus_img"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/user"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/user"
+                            android:layout_width="224dp"
+                            android:layout_height="27dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Bus driver: Somnath"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/ima2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/c1"
+                            android:layout_width="219dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_details_curve"
+                            android:text="+919284732433"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/ima2"
+                            app:layout_constraintTop_toBottomOf="@+id/user"
+                            app:layout_constraintVertical_bias="0.277" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cab_dri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+
+                    android:layout_marginTop="28dp"
+                    android:background="@drawable/background_drawer"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ath2">
+
+                        <!--app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
+
+
+                        <TextView
+                            android:id="@+id/tv_cab"
+                            android:layout_width="224dp"
+                            android:layout_height="27dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Cab driver: Gaurish"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageViewd3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/c5"
+                            android:layout_width="219dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/layout_details_curve"
+                            android:text="+919370508408"
+                            android:textColor="@color/black"
+
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageViewd3" />
+
+                        <ImageView
+                            android:id="@+id/imageViewd3"
+                            android:layout_width="57dp"
+                            android:layout_height="58dp"
+                            android:layout_marginStart="16dp"
+                            android:src="@drawable/cab_image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.542" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--        ///-->
+
+
+                <!--        -->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+</FrameLayout>

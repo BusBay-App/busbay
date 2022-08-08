@@ -18,17 +18,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BusBay1"
-        android:screenOrientation="portrait"
+
         tools:targetApi="31">
         <activity
             android:name=".AddPollActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".AddComplain"
+            android:screenOrientation="portrait"
+
             android:exported="false"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".ComplainActivity"
+            android:screenOrientation="portrait"
+
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -48,10 +53,14 @@
         <activity
             android:name=".MapsViewActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_maps_view" />
         <activity
             android:name=".MapActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
+
             android:label="MapsActivity" />
 
         <service
@@ -61,9 +70,13 @@
 
         <activity
             android:name=".SlapScreen"
+            android:screenOrientation="portrait"
+
             android:exported="false" />
         <activity
             android:name=".InfoDetails"
+            android:screenOrientation="portrait"
+
             android:exported="false" />
         <!--
            TODO: Before you run your application, you need a Google Maps API key.
@@ -80,6 +93,8 @@
         <!-- <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCgV2kRk3KYu6CjMlTdUVRlCMHeOO5tFvk"/> -->
         <activity
             android:name=".SignIn"
+            android:screenOrientation="portrait"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -89,6 +104,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
 
         <meta-data

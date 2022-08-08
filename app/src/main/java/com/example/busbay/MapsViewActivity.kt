@@ -1,17 +1,21 @@
 package com.example.busbay
 
+import android.content.Intent
+import android.content.IntentSender
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.busbay.databinding.ActivityMapsViewBinding
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -39,7 +43,33 @@ class MapsViewActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+//        val intent = Intent("android.location.GPS_ENABLED_CHANGE")
+//        intent.putExtra("enabled", true)
+//        sendBroadcast(intent)
+
+        turnOnGPS()
         
+    }
+
+    private fun turnOnGPS() {
+        val request = LocationRequest.create().apply {
+            interval = 2000
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        }
+        val builder = LocationSettingsRequest.Builder().addLocationRequest(request)
+        val client: SettingsClient = LocationServices.getSettingsClient(this)
+        val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
+        task.addOnFailureListener {
+            if (it is ResolvableApiException) {
+                try {
+                    it.startResolutionForResult(this, 12345)
+                } catch (sendEx: IntentSender.SendIntentException) {
+                }
+            }
+        }.addOnSuccessListener {
+            //here GPS is On
+        }
     }
 
     /**

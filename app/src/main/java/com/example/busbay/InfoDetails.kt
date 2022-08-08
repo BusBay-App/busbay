@@ -66,6 +66,7 @@ class InfoDetails : AppCompatActivity() {
         binding.studentRollNumber.setVisibility(View.INVISIBLE);
         binding.yearPassoutEdittext.setVisibility(View.INVISIBLE);
         binding.branchEdittext.setVisibility(View.INVISIBLE);
+        binding.textfeildbranchdrop.setVisibility(View.INVISIBLE);
 
         binding.driverPassword.setVisibility(View.INVISIBLE);
 
@@ -109,6 +110,12 @@ class InfoDetails : AppCompatActivity() {
         val professionType=resources.getStringArray(R.array.Profession)
         val arrayAdapter= ArrayAdapter(this,R.layout.dropdown_item,professionType)
         binding.autoCompleteTextView.setAdapter(arrayAdapter)
+
+    // setting up the Branchdropdown menu
+    val branchType=resources.getStringArray(R.array.Branch)
+    val arrayAdapter1= ArrayAdapter(this,R.layout.dropdown_item,branchType)
+    binding.branchEdittext.setAdapter(arrayAdapter1)
+
 //        Toast.makeText(this, binding.autoCompleteTextView.text.toString(), Toast.LENGTH_SHORT).show()
 
         binding.autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
@@ -124,6 +131,7 @@ class InfoDetails : AppCompatActivity() {
                     binding.studentRollNumber.setVisibility(View.VISIBLE);
                     binding.yearPassoutEdittext.setVisibility(View.VISIBLE);
                     binding.branchEdittext.setVisibility(View.VISIBLE);
+                    binding.textfeildbranchdrop.setVisibility(View.VISIBLE);
 
 
 
@@ -134,6 +142,8 @@ class InfoDetails : AppCompatActivity() {
                     binding.studentRollNumber.setVisibility(View.INVISIBLE);
                     binding.yearPassoutEdittext.setVisibility(View.INVISIBLE);
                     binding.branchEdittext.setVisibility(View.VISIBLE);
+                    binding.textfeildbranchdrop.setVisibility(View.VISIBLE);
+
 
                     binding.driverPassword.setVisibility(View.INVISIBLE);};
                 "Bus Driver"->{
@@ -141,6 +151,8 @@ class InfoDetails : AppCompatActivity() {
                     binding.studentRollNumber.setVisibility(View.INVISIBLE);
                     binding.yearPassoutEdittext.setVisibility(View.INVISIBLE);
                     binding.branchEdittext.setVisibility(View.INVISIBLE);
+                    binding.textfeildbranchdrop.setVisibility(View.INVISIBLE);
+
 
 //                    Toast.makeText(this, value, Toast.LENGTH_LONG).show()
                     binding.driverPassword.setVisibility(View.VISIBLE);
@@ -151,6 +163,8 @@ class InfoDetails : AppCompatActivity() {
                     binding.studentRollNumber.setVisibility(View.INVISIBLE);
                     binding.yearPassoutEdittext.setVisibility(View.INVISIBLE);
                     binding.branchEdittext.setVisibility(View.INVISIBLE);
+                    binding.textfeildbranchdrop.setVisibility(View.INVISIBLE);
+
 
                     binding.driverPassword.setVisibility(View.INVISIBLE);
                 };
@@ -167,6 +181,8 @@ class InfoDetails : AppCompatActivity() {
             val yearpass=binding.yearPassoutEdittext.text.toString()
             val numberroll=binding.studentRollNumber.text.toString()
             val detailsroom=binding.roomDetailsEdittext.text.toString()
+
+//            Toast.makeText(this, branch, Toast.LENGTH_SHORT).show()
 
             //driver
             val passwordDriver= binding.driverPassword.text.toString()

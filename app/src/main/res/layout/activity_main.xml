@@ -3,13 +3,308 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/body_container"
         android:background="@color/light_white"
         tools:context=".MainActivity">
+
+<!--        &lt;!&ndash; ______________________________________________________________________________________________-           &ndash;&gt;-->
+<!--        <androidx.drawerlayout.widget.DrawerLayout-->
+<!--            android:id="@+id/drawer_layout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.5"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                <androidx.appcompat.widget.Toolbar-->
+<!--                    android:id="@+id/toolbar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:backgroundTint="@color/transparent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                    <Button-->
+
+<!--                        android:layout_width="56dp"-->
+<!--                        android:layout_height="64dp"-->
+<!--                        android:layout_gravity="end"-->
+<!--                        android:layout_marginTop="16dp"-->
+
+
+<!--                        android:layout_marginEnd="16dp"-->
+<!--                        android:background="@drawable/ui_nav_drawer_nav"-->
+
+
+<!--                        android:backgroundTint="@color/transparent"-->
+<!--                        android:drawableTop="@drawable/ui_nav_drawer_nav"-->
+<!--                        android:theme="@style/Theme.BusBay5"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        tools:ignore="MissingConstraints" />-->
+<!--                </androidx.appcompat.widget.Toolbar>-->
+<!--            </LinearLayout>-->
+
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="start"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.5"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/toolbar">-->
+<!--                &lt;!&ndash;        <LinearLayout&ndash;&gt;-->
+<!--                &lt;!&ndash;            android:id="@+id/toolbar"&ndash;&gt;-->
+<!--                &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--                &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                &lt;!&ndash;            android:background="@color/black"&ndash;&gt;-->
+<!--                &lt;!&ndash;            android:orientation="vertical"&ndash;&gt;-->
+<!--                &lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--                &lt;!&ndash;            app:layout_constraintHorizontal_bias="0.5"&ndash;&gt;-->
+<!--                &lt;!&ndash;            app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--                &lt;!&ndash;            app:layout_constraintTop_toTopOf="parent">&ndash;&gt;-->
+
+
+<!--                &lt;!&ndash;        </LinearLayout>&ndash;&gt;-->
+
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/atharva"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="15dp"-->
+<!--                    android:layout_marginEnd="15dp"-->
+<!--                    android:background="@drawable/background_drawer"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:padding="10dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.5"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imageView7"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:contentDescription="user_profile_image"-->
+<!--                        android:elevation="18dp"-->
+<!--                        android:src="@drawable/atharva" />-->
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/white_area"-->
+<!--                        android:layout_width="280dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:layout_marginEnd="10dp"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="2dp"-->
+<!--                            android:layout_marginBottom="2dp"-->
+<!--                            android:orientation="horizontal">-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/user_name"-->
+<!--                                android:layout_width="108dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="20dp"-->
+<!--                                android:text="Atharva Bhanage"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="14sp" />-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/location"-->
+<!--                                android:layout_width="130dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_marginStart="10dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="ur da'ad"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="14sp" />-->
+
+
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="279dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="2dp"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/occupation"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="20dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="OP human for u"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="14sp" />-->
+
+<!--                            <LinearLayout-->
+<!--                                android:id="@+id/phone_number_box"-->
+<!--                                android:layout_width="221dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="18dp"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:layout_marginBottom="5dp"-->
+<!--                                android:background="@drawable/layout_details_curve"-->
+<!--                                android:orientation="horizontal">-->
+
+<!--                                <TextView-->
+<!--                                    android:id="@+id/phone_number"-->
+<!--                                    android:layout_width="202dp"-->
+<!--                                    android:layout_height="23dp"-->
+<!--                                    android:layout_marginStart="8dp"-->
+<!--                                    android:layout_marginTop="2dp"-->
+<!--                                    android:layout_marginEnd="150dp"-->
+<!--                                    android:layout_marginBottom="2dp"-->
+<!--                                    android:text="9834XXX age nhi btaunga"-->
+<!--                                    android:textColor="@color/black"-->
+<!--                                    android:textSize="14sp" />-->
+
+<!--                            </LinearLayout>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="15dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginEnd="15dp"-->
+<!--                    android:background="@drawable/background_drawer"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:padding="10dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.5"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/atharva">-->
+
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imagesdad"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:contentDescription="user_profile_image"-->
+<!--                        android:elevation="18dp"-->
+<!--                        android:src="@drawable/harsh" />-->
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/abcd"-->
+<!--                        android:layout_width="280dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:layout_marginEnd="10dp"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="2dp"-->
+<!--                            android:layout_marginBottom="2dp"-->
+<!--                            android:orientation="horizontal">-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/hvg_user"-->
+<!--                                android:layout_width="108dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="20dp"-->
+<!--                                android:text="Harsvardhan Gupta"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="14sp" />-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/hvg_location"-->
+<!--                                android:layout_width="130dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_marginStart="10dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="kya bolu ab"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="14sp" />-->
+
+
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="279dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="2dp"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/harsh_occupation"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="20dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="whatever"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="14sp" />-->
+
+<!--                            <LinearLayout-->
+<!--                                android:id="@+id/phone_number_harsh"-->
+<!--                                android:layout_width="221dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="18dp"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:layout_marginBottom="5dp"-->
+<!--                                android:background="@drawable/layout_details_curve"-->
+<!--                                android:orientation="horizontal">-->
+
+<!--                                <TextView-->
+<!--                                    android:id="@+id/phone_number_text_harsh"-->
+<!--                                    android:layout_width="202dp"-->
+<!--                                    android:layout_height="23dp"-->
+<!--                                    android:layout_marginStart="8dp"-->
+<!--                                    android:layout_marginTop="2dp"-->
+<!--                                    android:layout_marginEnd="150dp"-->
+<!--                                    android:layout_marginBottom="2dp"-->
+<!--                                    android:text="9834XXX aage nhi btaunga"-->
+<!--                                    android:textColor="@color/black"-->
+<!--                                    android:textSize="14sp" />-->
+
+<!--                            </LinearLayout>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </androidx.drawerlayout.widget.DrawerLayout>-->
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -48,4 +343,28 @@
                 android:fitsSystemWindows="true"/>
         </androidx.drawerlayout.widget.DrawerLayout>
     </RelativeLayout>
+        <Button
+            android:id="@+id/btnNavDrawer"
+            android:layout_width="56dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:theme="@style/Theme.BusBay5"
+
+
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+
+
+            android:backgroundTint="@color/transparent"
+            android:background="@drawable/ui_nav_drawer_nav"
+            android:drawableTop="@drawable/ui_nav_drawer_nav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>
