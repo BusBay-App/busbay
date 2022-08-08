@@ -9,7 +9,9 @@ import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+
 import androidx.core.view.GravityCompat
+
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.example.busbay.databinding.ActivityMainBinding
@@ -24,7 +26,12 @@ class MainActivity : AppCompatActivity() {
 //    private lateinit var mDrawerToggle: ActionBarDrawerToggle
     private lateinit var  binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
+
     lateinit var toggle:ActionBarDrawerToggle
+
+    lateinit var toggle: ActionBarDrawerToggle
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,6 +98,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
 //        mDrawerToggle = ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar, R.string.open, R.string.close)
 //        mDrawerToggle!!.syncState()
 //        binding.drawerLayout!!.closeDrawer(GravityCompat.START)
@@ -135,8 +143,18 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        //________________________________________________________ edit for side bar_________
 
+
+        val drawerLayout = binding.drawerLayout
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //______________________________________________________________________________
     }
+
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
 //            add(R.id.flFragment, fragment)
